@@ -12,10 +12,12 @@ module.exports = {
     options.tableName = 'Users';
     return queryInterface.bulkInsert(options,[
       { 
-        firstName:'user',
+        firstName:'Amber',
         lastName:'Demo',
         email:'demo@user.io',
-        username:'Demo-lition',
+        username:'demoAmber',
+        phoneNumber:'1234567890',
+        photoUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1139063953331331153/amber-profile_copy.jpg',
         hashedPassword:bcrypt.hashSync('password')
       },
       {
@@ -23,6 +25,8 @@ module.exports = {
         lastName:'One',
         email:'user1@user.io',
         username:'FakeUser1',
+        phoneNumber:'2626262626',
+        photoUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1139063953331331153/amber-profile_copy.jpg',
         hashedPassword:bcrypt.hashSync('password2')
       },
       {
@@ -30,6 +34,8 @@ module.exports = {
         lastName:'Two',
         email:'user2@user.io',
         username:'FakeUser2',
+        phoneNumber:'4561237890',
+        photoUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1139063953331331153/amber-profile_copy.jpg',
         hashedPassword:bcrypt.hashSync('password3')
       },
     ])
@@ -54,7 +60,7 @@ module.exports = {
     options.tableName = 'Users';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options,{
-      username:{[Op.in]:['Demo-lition','FakeUser1','FakeUser2']},
+      username:{[Op.in]:['demoAmber','FakeUser1','FakeUser2']},
       
     },{});
   }

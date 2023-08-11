@@ -10,6 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      User.hasMany(models.ShoppingCart,{foreignKey:'userId'});
+      User.hasMany(models.Comment,{foreignKey:'userId'});
     }
   }
   User.init({
@@ -48,7 +50,22 @@ module.exports = (sequelize, DataTypes) => {
     validate:{
       len:[60,60]
     }
-  }
+  },
+    phoneNumber:{
+      type:DataTypes.STRING,
+      allowNull:false, 
+      validate:{
+        len:[10,11]
+      }
+
+    },
+    photoUrl:{
+      type:DataTypes.STRING,
+      allowNull:true,
+      validate:{
+        isUrl:true
+      }
+    }
   }, {
     sequelize,
     modelName: 'User',
