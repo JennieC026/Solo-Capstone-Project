@@ -25,7 +25,7 @@ function App() {
         <Route exact path="/stores/:storeId">
           <StoreDetail />
         </Route>
-        <Route exact path="/dishes/:dishId">
+        <Route exact path="/stores/:storeId/dishes/:dishId">
           <DishDetail />
         </Route>
         </Switch>}

@@ -1,9 +1,11 @@
-import {useEffect}from'react';
+import {useEffect,useRef}from'react';
 import{useDispatch,useSelector}from'react-redux'
 import {fetchAllStores}from'../../../store/stores'
 import { fetchStoreDishes } from '../../../store/dishes';
 import { useParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom';
+import StoreComment from '../../Comments/StoreComment';
+
 import './StoreDetail.css'
 
 
@@ -11,9 +13,8 @@ function StoreDetail(){
     const dispatch = useDispatch();
     const {storeId} = useParams();
     const store = useSelector(state => state.stores[storeId]);
-    const dishes = useSelector(state => Object.values(state.dishes));
+    const dishes = useSelector(state => Object.values(state.dishes));//cause render, try to convert the array outside of the selector if have time
 
-    
     useEffect(() => {
         if(!store){
             dispatch(fetchAllStores());
@@ -22,10 +23,14 @@ function StoreDetail(){
 
     useEffect(() => {
         if(dishes.length === 0){
-            dispatch(fetchStoreDishes());
+            dispatch(fetchStoreDishes(storeId));
         }
     }, [dispatch]);
 
+    const myRef = useRef(null);
+    const handleScrollButtonClick = () => {
+        myRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
 
     if(!store){
         return(<div>Loading...</div>)
@@ -41,7 +46,7 @@ function StoreDetail(){
                     <h1>{store.name}</h1>
                     </div>
                     <div className='store-detail-info-starRating-price'>
-                    <i class="fa-solid fa-star"></i>{store.avgStarRating} ({store.Comments? store.Comments.length+'ratings' : '0 rating'}) • {store.category} • {store.costLevel} • Review NavLink Placeholder
+                    <i class="fa-solid fa-star"></i>{store.avgStarRating} ({store.Comments? store.Comments.length+'ratings' : '0 rating'}) • {store.category} • {store.costLevel} • <button onClick={handleScrollButtonClick}>View Reviews</button>
                     </div>
                     <div className='store-detail-info-delivery'>
                         {store.deliveryFee ? '$'+store.deliveryFee +' Delivery Fee'  : 'No Delivery Fee'}
@@ -52,7 +57,7 @@ function StoreDetail(){
                             <ol className='store-detail-all-dishes-list'>
                             {dishes.map((dish) => (
                     <li key={dish.id} className='dish-detail-card-container'>
-                        <NavLink to={`/dishes/${dish.id}`} className='dish-index-card'>
+                        <NavLink to={`/stores/${store.id}/dishes/${dish.id}`} className='dish-index-card'>
                             <div className='dish-index-card-image-container'>
                                 <img className='dish-index-card-image' src={dish.imageUrl} alt={dish.name}/>
                             </div>
@@ -72,6 +77,8 @@ function StoreDetail(){
                         </div>
 
                 </div>
+                <div ref={myRef}><StoreComment store={store}/></div>
+                
         </div>
     )
 }

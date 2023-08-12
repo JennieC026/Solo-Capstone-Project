@@ -1,10 +1,26 @@
 const express = require('express');
 
-const {Store, Comment, User,StoreCategory} = require('../../db/models');
+const {Store, Comment, User,StoreCategory,Dish} = require('../../db/models');
 const Sequelize = require('sequelize');
 const {findBiggestCategory} = require('../../utils/categoryTools');
 
 const router = express.Router();
+
+
+router.get('/:storeId/dishes', async (req, res) => {
+    const dishes = await Dish.findAll({
+        where:{
+            storeId : req.params.storeId
+
+        },
+        include: [
+            {
+                model: Store,
+            },
+        ],
+    });
+    return res.json(dishes);
+});
 
 //get all stores
 router.get('/', async (req, res) => {
@@ -49,6 +65,10 @@ router.get('/:storeId', async (req, res) => {
                 model: Comment,
                 include: [User],
             },
+            {
+                model:StoreCategory,
+                include:[StoreCategory]
+            }
         ],
     });
     if(!store){
@@ -62,6 +82,8 @@ router.get('/:storeId', async (req, res) => {
         totalStars += comment.starRating;
     }
     modifiedStore.avgStarRating = modifiedStore.Comments.length > 0 ? totalStars / modifiedStore.Comments.length : 0;
+    modifiedStore.category = findBiggestCategory(modifiedStore.StoreCategory);
+    delete storeObj.StoreCategory;
     res.json(modifiedStore);
 });
 

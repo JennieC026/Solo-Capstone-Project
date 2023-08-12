@@ -10,7 +10,7 @@ export const loadStoreDishes = (dishes) => {
 
 //thunk
 export const fetchStoreDishes = (storeId) => async (dispatch) => {
-    const response = await csrfFetch(`/api/dishes`);
+    const response = await csrfFetch(`/api/stores/${storeId}/dishes`);
     if (response.ok) {
         const dishes = await response.json();
         dispatch(loadStoreDishes(dishes));

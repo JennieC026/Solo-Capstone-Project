@@ -5,6 +5,8 @@ const e = require('express');
 
 const router = express.Router();
 
+
+
 router.get('/', async (req, res) => {
     const dishes = await Dish.findAll({
         include: [
@@ -15,6 +17,8 @@ router.get('/', async (req, res) => {
     });
     return res.json(dishes);
 });
+
+
 
 
 module.exports = router;

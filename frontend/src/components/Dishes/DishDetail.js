@@ -1,34 +1,42 @@
 import {useEffect}from'react';
 import{useDispatch,useSelector}from'react-redux'
 import { fetchStoreDishes } from '../../store/dishes';
+import { fetchAllStores } from '../../store/stores';
 import { useParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom';
 import './DishDetail.css'
 
 function DishDetail(){
     const dispatch = useDispatch();
-    const {dishId} = useParams();
+    const {dishId,storeId} = useParams();
     const dish = useSelector(state => state.dishes[dishId]);
+    const store = useSelector(state => state.stores[dish?.storeId])
 
     
 
 
     useEffect(() => {
         if(!dish){
-            dispatch(fetchStoreDishes());
+            dispatch(fetchStoreDishes(storeId));
+        }
+    }, [dispatch]);
+
+    useEffect(() => {
+        if(!store){
+            dispatch(fetchAllStores());
         }
     }, [dispatch]);
 
 
-    if(!dish){
+    if(!dish||!store){
         return(<div>Loading...</div>)
     }
     
     return(
         <div>
-            <NavLink to={`/stores/${dish.StoreId}`} className='dish-detail-back-link'>
+            <NavLink to={`/stores/${dish.storeId}`} className='dish-detail-back-link'>
             <div >
-            Back to Store (store name placeholder)
+            Back to {store?.name}
             </div>
                 </NavLink>
                 <div className='dish-detail-image-info-container'>
