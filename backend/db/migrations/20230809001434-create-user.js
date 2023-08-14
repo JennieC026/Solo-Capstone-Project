@@ -27,6 +27,15 @@ module.exports = {
         type: Sequelize.STRING.BINARY,
         allowNull: false
       },
+      phoneNumber: {
+        type: Sequelize.STRING(11),
+        allowNull: false,
+        unique: true
+      },
+      photoUrl: {
+        type: Sequelize.STRING(256),
+        allowNull: true,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
