@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === 'production') {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    options.tableName = 'shoppingCarts';
+    options.tableName = 'ShoppingCarts';
     return queryInterface.bulkInsert(options,[
       {
        userId:1,
@@ -33,7 +33,7 @@ module.exports = {
 
   async down (queryInterface, Sequelize) {
 
-    options.tableName = 'shoppingCarts';
+    options.tableName = 'ShoppingCarts';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options,{
       userId: {
