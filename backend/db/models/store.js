@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       Store.belongsTo(models.StoreCategory,{foreignKey:'categoryId'});
       Store.hasMany(models.Dish,{foreignKey:'storeId'});
       Store.hasMany(models.Comment,{foreignKey:'storeId'});
+      Store.hasMany(models.ShoppingCart,{foreignKey:'storeId'});
     }
   }
   Store.init({

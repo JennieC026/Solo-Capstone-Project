@@ -17,6 +17,7 @@ module.exports = {
       {
         shoppingCartId:2,
         dishId:2,
+        quantity:1  
 
       },
       {

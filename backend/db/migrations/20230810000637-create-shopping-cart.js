@@ -21,6 +21,19 @@ module.exports = {
           key:'id'
         }
       },
+      storeId: {
+        type: Sequelize.INTEGER,
+        allowNull:false,
+        references:{
+          model:'Stores',
+          key:'id'
+        }
+      },
+      status: {
+        type: Sequelize.ENUM('open','processing', 'closed'),
+        defaultValue:'open',
+        allowNull:false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
