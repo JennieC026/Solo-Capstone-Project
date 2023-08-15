@@ -40,7 +40,8 @@ router.get('/', async (req, res) => {
         
     ],
     where:{
-        userId:req.user.id
+        userId:req.user.id,
+        status:'open'
     },
         include: [
             {
@@ -52,16 +53,69 @@ router.get('/', async (req, res) => {
     const modifiedShoppingCarts = shoppingCarts.map(shoppingCart => {
         let shoppingCartObj = shoppingCart.toJSON();
         shoppingCartObj.total = 0;
+        shoppingCartObj.dishAmount = 0;
         for(let shoppingCartDish of shoppingCart.ShoppingCartDishes){
             shoppingCartObj.total += shoppingCartDish.Dish.price * shoppingCartDish.quantity;
+            shoppingCartObj.dishAmount += shoppingCartDish.quantity;
         }
-        shoppingCartObj.total = shoppingCartObj.total;
+        
+       
         return shoppingCartObj;
     })
 
     return res.json(modifiedShoppingCarts);
 });
 
+
+router.put('/:shoppingCartId/shoppingCartDish/:shoppingCartDishId', async (req, res) => {
+    const {user} = req;
+    if(!user){
+        return res.status(401).json({
+            message:"Authentication required"})
+    }
+    const targetShoppingCart = await ShoppingCart.findByPk(parseInt(req.params.shoppingCartId));
+    if(!targetShoppingCart){
+        return res.status(404).json({
+            message:"Order couldn't be found"
+        })
+    }
+    if(targetShoppingCart.userId !== user.id){
+        console.log('here',targetShoppingCart,user)
+        return res.status(403).json({
+            message:"Forbidden"
+        })
+    }
+    if(targetShoppingCart.status !== 'open'){
+        return res.status(403).json({
+            message:"Can't add or edit dishes to a closed order"
+        })
+    }
+    const {quantity} = req.body;
+    const existingShoppingCartDish = await ShoppingCartDish.findOne({
+        where:{
+            shoppingCartId:targetShoppingCart.id,
+            dishId:req.params.shoppingCartDishId
+        }
+    });
+    existingShoppingCartDish.quantity = quantity;
+        await existingShoppingCartDish.save();
+        const newShoppingCart = await ShoppingCart.findByPk(targetShoppingCart.id,{
+            attributes: ['id', 'userId', 'storeId','createdAt','updatedAt'],
+            include: [{
+                model: ShoppingCartDish,
+                include: [Dish],
+            },
+        ],
+    })
+        const modifiedShoppingCart = newShoppingCart.toJSON();
+        modifiedShoppingCart.total = 0;
+        modifiedShoppingCart.dishAmount = 0;
+        for(let shoppingCartDish of newShoppingCart.ShoppingCartDishes){
+            modifiedShoppingCart.total += shoppingCartDish.Dish.price * shoppingCartDish.quantity;
+            modifiedShoppingCart.dishAmount += shoppingCartDish.quantity;
+        }
+        return res.json(modifiedShoppingCart);
+});
 
 //add or edit dishes to an order
 router.post('/:shoppingCartId/shoppingCartDish/:dishId', async (req, res) => {
@@ -107,10 +161,12 @@ router.post('/:shoppingCartId/shoppingCartDish/:dishId', async (req, res) => {
     })
         const modifiedShoppingCart = newShoppingCart.toJSON();
         modifiedShoppingCart.total = 0;
+        modifiedShoppingCart.dishAmount = 0;
         for(let shoppingCartDish of newShoppingCart.ShoppingCartDishes){
             modifiedShoppingCart.total += shoppingCartDish.Dish.price * shoppingCartDish.quantity;
+            modifiedShoppingCart.dishAmount += shoppingCartDish.quantity;
         }
-        modifiedShoppingCart.total = modifiedShoppingCart.total;
+        
 
         return res.json(modifiedShoppingCart);
     }else{
@@ -128,11 +184,12 @@ router.post('/:shoppingCartId/shoppingCartDish/:dishId', async (req, res) => {
         ],
     });
     const modifiedShoppingCart = newShoppingCart.toJSON();
-        modifiedShoppingCart.total = 0;
-        for(let shoppingCartDish of newShoppingCart.ShoppingCartDishes){
-            modifiedShoppingCart.total += shoppingCartDish.Dish.price * shoppingCartDish.quantity;
-        }
-        modifiedShoppingCart.total = modifiedShoppingCart.total;
+    modifiedShoppingCart.total = 0;
+    modifiedShoppingCart.dishAmount = 0;
+    for(let shoppingCartDish of newShoppingCart.ShoppingCartDishes){
+        modifiedShoppingCart.total += shoppingCartDish.Dish.price * shoppingCartDish.quantity;
+        modifiedShoppingCart.dishAmount += shoppingCartDish.quantity;
+    }
 
         return res.json(modifiedShoppingCart);
     }
@@ -171,10 +228,11 @@ router.post('/new', async (req, res) => {
 });
 const modifiedShoppingCart = newShoppingCart.toJSON();
 modifiedShoppingCart.total = 0;
+modifiedShoppingCart.dishAmount = 0;
 for(let shoppingCartDish of newShoppingCart.ShoppingCartDishes){
     modifiedShoppingCart.total += shoppingCartDish.Dish.price * shoppingCartDish.quantity;
+    modifiedShoppingCart.dishAmount += shoppingCartDish.quantity;
 }
-modifiedShoppingCart.total = modifiedShoppingCart.total;
 
     return res.json(modifiedShoppingCart);
 
@@ -231,11 +289,12 @@ router.delete('/:shoppingCartId/shoppingCartDish/:shoppingCartDishId', async (re
     ],
 });
 const modifiedShoppingCart = newShoppingCart.toJSON();
-        modifiedShoppingCart.total = 0;
-        for(let shoppingCartDish of newShoppingCart.ShoppingCartDishes){
-            modifiedShoppingCart.total += shoppingCartDish.Dish.price * shoppingCartDish.quantity;
-        }
-        modifiedShoppingCart.total = modifiedShoppingCart.total;
+modifiedShoppingCart.total = 0;
+modifiedShoppingCart.dishAmount = 0;
+for(let shoppingCartDish of newShoppingCart.ShoppingCartDishes){
+    modifiedShoppingCart.total += shoppingCartDish.Dish.price * shoppingCartDish.quantity;
+    modifiedShoppingCart.dishAmount += shoppingCartDish.quantity;
+}
 
         return res.json(modifiedShoppingCart);
 });

@@ -4,6 +4,7 @@ import { fetchStoreDishes } from '../../store/dishes';
 import { fetchAllStores } from '../../store/stores';
 import { useParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom';
+import { fetchCreateShoppingCart,fetchEditShoppingCart,fetchAllShoppingCarts } from '../../store/shoppingcarts';
 import './DishDetail.css'
 
 function DishDetail(){
@@ -11,6 +12,8 @@ function DishDetail(){
     const {dishId,storeId} = useParams();
     const dish = useSelector(state => state.dishes[dishId]);
     const store = useSelector(state => state.stores[dish?.storeId])
+    const shoppingCarts = useSelector(state => state.shoppingCarts)
+    const shoppingCartsArr = Object.values(shoppingCarts);
 
     
 
@@ -26,6 +29,23 @@ function DishDetail(){
             dispatch(fetchAllStores());
         }
     }, [dispatch]);
+
+    const handleAddToCartClick = () => {
+        const existShoppingCart = shoppingCartsArr.find((shoppingCart) => shoppingCart.storeId === parseInt(storeId));
+    
+        if(existShoppingCart){
+            dispatch(fetchEditShoppingCart(existShoppingCart.id,dishId,1));
+            dispatch(fetchAllShoppingCarts());
+            
+        }else{
+        dispatch(fetchCreateShoppingCart(storeId,dishId,1));
+        dispatch(fetchAllShoppingCarts());
+
+        }
+        window.alert('Added to Order')
+        
+
+    }
 
 
     if(!dish||!store){
@@ -48,11 +68,11 @@ function DishDetail(){
                         <div className='dish-detail-info-name'>
                             <h1>{dish.name}</h1>
                             </div>
-                            {dish.calories ?  dish.calories+' Cal' : 'No calorie information'}
+                            {dish.calorie ?  dish.calorie+' Cal' : 'No calorie information'}
                             {'$' + dish.price}
 
                 </div>
-                <button className='dish-detail-add-to-cart-button'>Add 1 to Order  •  {dish.price}</button>
+                <button className='dish-detail-add-to-cart-button' onClick={handleAddToCartClick}>Add 1 to Order  •  {dish.price}</button>
                 </div>
                 
                 </div>

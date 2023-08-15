@@ -5,6 +5,7 @@ import ProfileButton from "./ProfileButton";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import ShoppingCartsIndex from "../ShoppingCarts/ShoppCartsIndex/ShoppingCartsIndex";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
@@ -13,13 +14,21 @@ function Navigation({ isLoaded }) {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <li>
+      <div>
+        <div>
         <ProfileButton user={sessionUser} />
-      </li>
+      </div>
+      <div>
+       <ShoppingCartsIndex />
+      </div>
+
+      </div>
+      
+      
     );
   } else {
     sessionLinks = (
-      <li>
+      <div>
         <OpenModalButton
           buttonText="Log In"
           modalComponent={<LoginFormModal />}
@@ -28,19 +37,19 @@ function Navigation({ isLoaded }) {
           buttonText="Sign Up"
           modalComponent={<SignupFormModal />}
         />
-      </li>
+      </div>
     );
   }
 
   return (
-    <ul>
-      <li>
+    <div>
+      <div>
         <NavLink exact to="/">
           Home
         </NavLink>
-      </li>
+      </div>
       {isLoaded && sessionLinks}
-    </ul>
+    </div>
   );
 }
 
