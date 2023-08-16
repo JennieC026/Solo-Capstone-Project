@@ -41,6 +41,8 @@ const validateSignup = [
       lastName:user.lastName,
       email:user.email,
       username:user.username,
+      photoUrl:user.photoUrl,
+      phoneNumber:user.phoneNumber,
     };
 
     await setTokenCookie(res, safeUser);

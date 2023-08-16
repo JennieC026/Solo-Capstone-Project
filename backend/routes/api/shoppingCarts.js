@@ -36,12 +36,11 @@ router.put('/:shoppingCartId/checkout', async (req, res) => {
 //get all orders
 router.get('/', async (req, res) => {
     const shoppingCarts = await ShoppingCart.findAll({
-        attributes: ['id', 'userId', 'storeId','createdAt','updatedAt',
+        attributes: ['id', 'userId', 'storeId','status','createdAt','updatedAt',
         
     ],
     where:{
         userId:req.user.id,
-        status:'open'
     },
         include: [
             {
@@ -91,16 +90,18 @@ router.put('/:shoppingCartId/shoppingCartDish/:shoppingCartDishId', async (req, 
         })
     }
     const {quantity} = req.body;
+ 
     const existingShoppingCartDish = await ShoppingCartDish.findOne({
         where:{
             shoppingCartId:targetShoppingCart.id,
             dishId:req.params.shoppingCartDishId
         }
     });
+  
     existingShoppingCartDish.quantity = quantity;
         await existingShoppingCartDish.save();
         const newShoppingCart = await ShoppingCart.findByPk(targetShoppingCart.id,{
-            attributes: ['id', 'userId', 'storeId','createdAt','updatedAt'],
+            attributes: ['id', 'userId', 'storeId','status','createdAt','updatedAt'],
             include: [{
                 model: ShoppingCartDish,
                 include: [Dish],
@@ -142,6 +143,7 @@ router.post('/:shoppingCartId/shoppingCartDish/:dishId', async (req, res) => {
         })
     }
     const {quantity} = req.body;
+    
     const existingShoppingCartDish = await ShoppingCartDish.findOne({
         where:{
             shoppingCartId:targetShoppingCart.id,
@@ -149,7 +151,8 @@ router.post('/:shoppingCartId/shoppingCartDish/:dishId', async (req, res) => {
         }
     });
     if(existingShoppingCartDish){
-        existingShoppingCartDish.quantity += quantity;
+        console.log('quantityyyyyyyyyyyyyyyyyyyyy',quantity)
+        existingShoppingCartDish.quantity = Number(existingShoppingCartDish.quantity) + Number(quantity);
         await existingShoppingCartDish.save();
         const newShoppingCart = await ShoppingCart.findByPk(targetShoppingCart.id,{
             attributes: ['id', 'userId', 'storeId','createdAt','updatedAt'],
