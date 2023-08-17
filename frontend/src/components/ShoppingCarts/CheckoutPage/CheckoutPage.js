@@ -2,6 +2,7 @@ import React,{ useEffect,useState,useRef } from 'react';
 import{ useDispatch, useSelector}from'react-redux';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { fetchCreateComment } from '../../../store/comments';
+import { fetchAllStores } from '../../../store/stores';
 import { useHistory } from "react-router-dom";
 
 function CheckoutPage(){
@@ -11,10 +12,13 @@ function CheckoutPage(){
     const shoppingCart = useSelector(store => store.shoppingCarts[shoppingCartId]);
     const sessionUser = useSelector(store => store.session.user);
     const store = useSelector(state => state.stores[shoppingCart?.storeId]);
+    
     const [comment, setComment] = useState('');
     const [hoveredStar, setHoveredStar] = useState(0);
     const [stars,setStars] = useState(0);
     const [showCommentBar,setShowCommentBar] = useState(true);
+
+    let existComment = store?.Comments?.find(comment => comment.userId === sessionUser.id);
 
     const handleSubmitComment = async(e) => {
         e.preventDefault();
@@ -24,11 +28,18 @@ function CheckoutPage(){
         };
         await dispatch(fetchCreateComment(shoppingCart.storeId,newComment));
         setShowCommentBar(false);
-        history.push(`/`);
-
-
+        await dispatch(fetchAllStores())
+       
 
     }
+
+    const handleDoneClick = async (e) => {
+        e.preventDefault();
+        history.push(`/`);
+
+    }
+
+
 
         const handleStarHover = (index) =>{
             setHoveredStar(index);
@@ -57,7 +68,7 @@ function CheckoutPage(){
             <h1>Thanks for your Order,{sessionUser.firstName}</h1>
             </div>
             <div className="order-summary-container">
-                {shoppingCart && shoppingCart.shoppingCartDishes.map((shoppingCartDish) => (
+                {shoppingCart && shoppingCart?.shoppingCartDishes?.map((shoppingCartDish) => (
                     <div className="order-summary-dish-container">
                         <div className="order-summary-dish-name">
                             <h3>{shoppingCartDish.dish.name}</h3>
@@ -70,7 +81,7 @@ function CheckoutPage(){
                 <div className="order-total-container">
                     <h3>Order Total: ${shoppingCart?.total}</h3>
                     </div>
-                    {showCommentBar && <div className="order-comment-container">
+                    {showCommentBar && !existComment && <div className="order-comment-container">
                         <div className="order-comment-header">
                         <h3>Leave a comment for {store?.name}</h3>
                         </div>
@@ -85,7 +96,7 @@ function CheckoutPage(){
                     {!showCommentBar && <div className="order-thanks-comment-container">
                         Thanks for the comment!
                         </div>}
-                        <button>Done</button>
+                        <button onClick={handleDoneClick}>Done</button>
 
 
                 </div>

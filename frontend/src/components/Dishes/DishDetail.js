@@ -1,20 +1,23 @@
-import {useEffect}from'react';
+import { useEffect, useState }from'react';
 import{useDispatch,useSelector}from'react-redux'
 import { fetchStoreDishes } from '../../store/dishes';
 import { fetchAllStores } from '../../store/stores';
 import { useParams } from 'react-router-dom';
-import { NavLink } from 'react-router-dom/cjs/react-router-dom';
+import { NavLink,useHistory } from 'react-router-dom/cjs/react-router-dom';
 import { fetchCreateShoppingCart,fetchEditShoppingCart,fetchAllShoppingCarts } from '../../store/shoppingcarts';
 import './DishDetail.css'
 
 function DishDetail(){
     const dispatch = useDispatch();
+    const history = useHistory();
     const {dishId,storeId} = useParams();
     const dish = useSelector(state => state.dishes[dishId]);
     const store = useSelector(state => state.stores[dish?.storeId])
     const shoppingCarts = useSelector(state => state.shoppingCarts)
-    const shoppingCartsArr = Object.values(shoppingCarts);
-
+    const shoppingCartsArr = Object.values(shoppingCarts).filter(shoppingCart => shoppingCart.status === 'open');
+    const shoppingCartDishes = shoppingCartsArr?.find(shoppingCart => shoppingCart.storeId === parseInt(dish?.storeId))?.shoppingCartDishes;
+    const shoppingCartDish = shoppingCartDishes?.find(shoppingCartDish => shoppingCartDish.dishId === parseInt(dishId));
+    const [quantity,setQuantity] = useState(shoppingCartDish?.quantity? shoppingCartDish.quantity : 1);
     
 
 
@@ -34,15 +37,16 @@ function DishDetail(){
         const existShoppingCart = shoppingCartsArr.find((shoppingCart) => shoppingCart.storeId === parseInt(storeId));
     
         if(existShoppingCart){
-            dispatch(fetchEditShoppingCart(existShoppingCart.id,dishId,1));
+            console.log('quantity',quantity)
+            dispatch(fetchEditShoppingCart(existShoppingCart.id,dishId,quantity));
             dispatch(fetchAllShoppingCarts());
             
         }else{
-        dispatch(fetchCreateShoppingCart(storeId,dishId,1));
+        dispatch(fetchCreateShoppingCart(storeId,dishId,quantity));
         dispatch(fetchAllShoppingCarts());
 
         }
-        window.alert('Added to Order')
+        history.push(`/stores/${storeId}`);
         
 
     }
@@ -72,7 +76,25 @@ function DishDetail(){
                             {'$' + dish.price}
 
                 </div>
-                <button className='dish-detail-add-to-cart-button' onClick={handleAddToCartClick}>Add 1 to Order  •  {dish.price}</button>
+                <div className='dish-detail-quantity-selector-container'>
+                <select className='shopping-cart-detail-select-field' 
+       value={quantity} 
+       onChange={(e)=>setQuantity(e.target.value)} 
+       >
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+            <option value='6'>6</option>
+            <option value='7'>7</option>
+            <option value='8'>8</option>
+            <option value='9'>9</option>
+            <option value='10'>10</option>
+
+       </select>
+                    </div>
+                <button className='dish-detail-add-to-cart-button' onClick={handleAddToCartClick}>Add {quantity} to Order  •  {dish.price}</button>
                 </div>
                 
                 </div>

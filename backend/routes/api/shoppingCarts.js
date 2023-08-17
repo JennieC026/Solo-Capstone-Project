@@ -251,7 +251,14 @@ router.delete('/:shoppingCartId/shoppingCartDish/:shoppingCartDishId', async (re
         return res.status(401).json({
             message:"Authentication required"})
     }
-    const targetShoppingCart = await ShoppingCart.findByPk(parseInt(req.params.shoppingCartId));
+    const targetShoppingCart = await ShoppingCart.findByPk(parseInt(req.params.shoppingCartId),{
+        include: [{
+            model: ShoppingCartDish,
+            include: [Dish],
+        },
+    ],
+    });
+    console.log('find shoppingcart in delete route',targetShoppingCart)
     if(!targetShoppingCart){
         return res.status(404).json({
             message:"Order couldn't be found"
@@ -269,37 +276,50 @@ router.delete('/:shoppingCartId/shoppingCartDish/:shoppingCartDishId', async (re
     }
     const existingShoppingCartDish = await ShoppingCartDish.findOne({
         where:{
-            shoppingCartId:targetShoppingCart.id,
-            dishId:req.params.shoppingCartDishId
+            id:req.params.shoppingCartDishId
         }
     });
+    console.log('find shoppingcartdishh in delete route',existingShoppingCartDish)
     if(!existingShoppingCartDish){
         return res.status(404).json({
             message:"The dish in this order couldn't be found"
         })
     }
+    
     await existingShoppingCartDish.destroy();
-    if(targetShoppingCart.ShoppingCartDishes.length === 0){
-        await targetShoppingCart.destroy();
-        return res.json({message:"Order deleted"})
-    }
     const newShoppingCart = await ShoppingCart.findByPk(targetShoppingCart.id,{
-        attributes: ['id', 'userId', 'storeId','createdAt','updatedAt'],
         include: [{
             model: ShoppingCartDish,
             include: [Dish],
         },
     ],
 });
-const modifiedShoppingCart = newShoppingCart.toJSON();
-modifiedShoppingCart.total = 0;
-modifiedShoppingCart.dishAmount = 0;
-for(let shoppingCartDish of newShoppingCart.ShoppingCartDishes){
-    modifiedShoppingCart.total += shoppingCartDish.Dish.price * shoppingCartDish.quantity;
-    modifiedShoppingCart.dishAmount += shoppingCartDish.quantity;
-}
+console.log('newCart',newShoppingCart)
+    if(!newShoppingCart.ShoppingCartDishes||newShoppingCart.ShoppingCartDishes?.length === 0){
+        console.log('destroy route hitted')
+        await targetShoppingCart.destroy();
+        return res.json({message:"Order deleted"})
+    } else{
+        const newShoppingCart = await ShoppingCart.findByPk(targetShoppingCart.id,{
+            attributes: ['id', 'userId', 'storeId','createdAt','updatedAt'],
+            include: [{
+                model: ShoppingCartDish,
+                include: [Dish],
+            },
+        ],
+    });
+    const modifiedShoppingCart = newShoppingCart.toJSON();
+    modifiedShoppingCart.total = 0;
+    modifiedShoppingCart.dishAmount = 0;
+    for(let shoppingCartDish of newShoppingCart.ShoppingCartDishes){
+        modifiedShoppingCart.total += shoppingCartDish.Dish.price * shoppingCartDish.quantity;
+        modifiedShoppingCart.dishAmount += shoppingCartDish.quantity;
+    }
+    
+            return res.json(modifiedShoppingCart);
 
-        return res.json(modifiedShoppingCart);
+    }
+   
 });
 
 

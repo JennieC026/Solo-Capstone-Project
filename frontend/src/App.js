@@ -30,12 +30,13 @@ function App() {
         <Route exact path="/stores/:storeId/dishes/:dishId">
           <DishDetail />
         </Route>
-        <Route exact path ="shoppingCarts/:shoppingCartId/checkout">
+        <Route path ="/shoppingCarts/:shoppingCartId/checkout">
           <CheckoutPage />
         </Route>
         <Route exact path ="shoppingCarts/:shoppingCartId">
           <ShoppingCartDetail />
         </Route>
+        
         </Switch>}
       
     </>

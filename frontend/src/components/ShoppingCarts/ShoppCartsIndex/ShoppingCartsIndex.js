@@ -6,6 +6,7 @@ import { fetchAllShoppingCarts } from '../../../store/shoppingcarts';
 import { fetchAllStores } from '../../../store/stores';
 import ShoppingCartDetail from '../ShoppingCartDetail/ShoppingCartDetail';
 import OpenModalButton from '../../OpenModalButton';
+import OpenRightSideModalButton from '../../OpenModalButton/RightSide';
 
 function ShoppingCartsIndex(){
     const dispatch = useDispatch();
@@ -14,26 +15,10 @@ function ShoppingCartsIndex(){
     const sessionUser = useSelector(state => state.session.user);
     const shoppingCarts = useSelector(state => state.shoppingCarts);
     const stores = useSelector(state => state.stores);
-    const shoppingCartsArr = Object.values(shoppingCarts);
+    const shoppingCartsArr = Object.values(shoppingCarts).filter(shoppingCart => shoppingCart.status === 'open');
     const storesArr = Object.values(stores);
 
-    const openMenu = () => {
-        if (showMenu) return;
-        setShowMenu(true);
-      };
-    
-      useEffect(() => {
-        if (!showMenu) return;
-    
-        const closeMenu = (e) => {
-          setShowMenu(false);
-        };
-    
-        document.addEventListener('click', closeMenu);
-    
-        return () => document.removeEventListener("click", closeMenu);
-      }, [showMenu]);
-    
+   
 
     useEffect(() => {
         if(sessionUser){
@@ -50,7 +35,7 @@ function ShoppingCartsIndex(){
 
 
 
-    const ulClassName = "shopping-carts-index-container" + (showMenu ? "" : " hidden");
+   
     let checkIfOnlyOneCart;
 
         if(shoppingCartsArr.length === 1){
@@ -74,11 +59,11 @@ function ShoppingCartsIndex(){
 
     return(
         <>
-        <button onClick={openMenu}><i class="fa-solid fa-cart-shopping"></i></button>
-        <div className={ulClassName} ref={ulRef}>
+       
+        <div  ref={ulRef}>
             {checkIfOnlyOneCart && <ShoppingCartDetail shoppingCart={shoppingCartsArr[0]}/>}
             {!checkIfOnlyOneCart && shoppingCartsArr.map((shoppingCart)=>(
-                <OpenModalButton
+                <OpenRightSideModalButton
                 buttonText={<div className='shopping-carts-index-single-cart-container'>
                 <div className='shopping-carts-index-single-cart-store-name'>
                     {stores[shoppingCart.storeId]?.name}

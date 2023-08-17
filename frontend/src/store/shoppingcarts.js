@@ -112,7 +112,8 @@ export const fetchRemoveShoppingCart = (shoppingCartId,dishId) => async (dispatc
     }
     const removedShoppingCart = await response.json();
     if(removedShoppingCart.message==="Order deleted"){
-        dispatch(removeShoppingCart(removedShoppingCart.id));
+        console.log('delete Order Hitted')
+        dispatch(removeShoppingCart(shoppingCartId));
         return response;
 
     }else{
@@ -138,7 +139,7 @@ export const fetchCheckoutShoppingCart = (shoppingCartId) => async (dispatch) =>
 }
 
 export const fetchChangeDishQuantity = (shoppingCartId,dishId,quantity) => async (dispatch) =>{
-    console.log('dishIdInThunk',dishId)
+    console.log('dishIdInThunk',dishId,quantity)
     const response = await csrfFetch(`/api/shoppingCarts/${shoppingCartId}/shoppingCartDish/${dishId}`, {
         method: "PUT",
         body: JSON.stringify({quantity}),

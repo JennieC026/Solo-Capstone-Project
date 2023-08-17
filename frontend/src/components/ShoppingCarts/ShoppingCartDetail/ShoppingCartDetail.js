@@ -3,6 +3,7 @@ import{ useDispatch, useSelector}from'react-redux';
 import { useHistory } from "react-router-dom";
 import ShoppingCartSelector from '../ShoppingCartSelector/ShoppingCartSelector';
 import { fetchAllShoppingCarts,fetchCheckoutShoppingCart } from '../../../store/shoppingcarts';
+import { useRightSideModal } from '../../../context/SideModal/RightSideModal';
 import './ShoppingCartDetail.css'
 
 
@@ -12,6 +13,7 @@ function ShoppingCartDetail({shoppingCart}){
     const updatedShoppingCart = useSelector(state=>state.shoppingCarts[shoppingCart?.id]);
     const dispatch = useDispatch();
     const history = useHistory();
+    const {closeModal} = useRightSideModal();
     const [shoppingCartDishes, setShoppingCartDishes] = useState(shoppingCart?.ShoppingCartDishes);
     const [newShoppingCart, setNewShoppingCart] = useState(shoppingCart);
 
@@ -26,8 +28,13 @@ function ShoppingCartDetail({shoppingCart}){
         e.preventDefault();
         dispatch(fetchCheckoutShoppingCart(shoppingCart.id));
         history.push(`/shoppingCarts/${shoppingCart.id}/checkout`);
+        closeModal();
     }
-        
+
+    const handleCloseModal = () => {
+        console.log('hitted close');
+        closeModal();
+    }
     
     
     return(
@@ -63,7 +70,7 @@ function ShoppingCartDetail({shoppingCart}){
                                             </div>
                                         <div className='shopping-cart-detail-single-item-quantity-total-container'>
                                             <div className='shopping-cart-detail-single-item-quantity-selector'>
-                                                <ShoppingCartSelector shoppingCartDish={shoppingCartDish}/>
+                                                <ShoppingCartSelector shoppingCartDish={shoppingCartDish} handleCloseModal={handleCloseModal}/>
                                             <div className='shopping-cart-detail-single-item-total'>
                                                 ${shoppingCartDish?.Dish.price * shoppingCartDish?.quantity}
                                                 </div>
