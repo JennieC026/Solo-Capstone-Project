@@ -4,6 +4,7 @@ const usersRouter = require('./users.js');
 const storesRouter = require('./stores.js');
 const commentsRouter = require('./comments.js');
 const dishesRouter = require('./dishes.js');
+const shoppingCartsRouter = require('./shoppingCarts.js');
 const { restoreUser } = require("../../utils/auth.js");
 
 
@@ -21,6 +22,8 @@ router.use('/stores', storesRouter);
 router.use('/comments', commentsRouter);
 
 router.use('/dishes', dishesRouter);
+
+router.use('/shoppingCarts', shoppingCartsRouter);
 
 router.post('/test', (req, res) => {
   res.json({ requestBody: req.body });

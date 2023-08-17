@@ -1,17 +1,26 @@
-import {useEffect}from'react';
+import { useEffect, useState }from'react';
 import{useDispatch,useSelector}from'react-redux'
 import { fetchStoreDishes } from '../../store/dishes';
 import { fetchAllStores } from '../../store/stores';
 import { useParams } from 'react-router-dom';
-import { NavLink } from 'react-router-dom/cjs/react-router-dom';
+import { NavLink,useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { fetchCreateShoppingCart,fetchEditShoppingCart,fetchAllShoppingCarts } from '../../store/shoppingcarts';
+import OpenModalButton from '../OpenModalButton';
+import LoginFormModal from '../LoginFormModal';
 import './DishDetail.css'
 
 function DishDetail(){
     const dispatch = useDispatch();
+    const history = useHistory();
     const {dishId,storeId} = useParams();
     const dish = useSelector(state => state.dishes[dishId]);
     const store = useSelector(state => state.stores[dish?.storeId])
-
+    const shoppingCarts = useSelector(state => state.shoppingCarts)
+    const sessionUser = useSelector(state => state.session.user);
+    const shoppingCartsArr = Object.values(shoppingCarts).filter(shoppingCart => shoppingCart.status === 'open');
+    const shoppingCartDishes = shoppingCartsArr?.find(shoppingCart => shoppingCart.storeId === parseInt(dish?.storeId))?.shoppingCartDishes;
+    const shoppingCartDish = shoppingCartDishes?.find(shoppingCartDish => shoppingCartDish.dishId === parseInt(dishId));
+    const [quantity,setQuantity] = useState(shoppingCartDish?.quantity? shoppingCartDish.quantity : 1);
     
 
 
@@ -26,6 +35,24 @@ function DishDetail(){
             dispatch(fetchAllStores());
         }
     }, [dispatch]);
+
+    const handleAddToCartClick = () => {
+        const existShoppingCart = shoppingCartsArr.find((shoppingCart) => shoppingCart.storeId === parseInt(storeId));
+    
+        if(existShoppingCart){
+            console.log('quantity',quantity)
+            dispatch(fetchEditShoppingCart(existShoppingCart.id,dishId,quantity));
+            dispatch(fetchAllShoppingCarts());
+            
+        }else{
+        dispatch(fetchCreateShoppingCart(storeId,dishId,quantity));
+        dispatch(fetchAllShoppingCarts());
+
+        }
+        history.push(`/stores/${storeId}`);
+        
+
+    }
 
 
     if(!dish||!store){
@@ -48,14 +75,47 @@ function DishDetail(){
                         <div className='dish-detail-info-name'>
                             <h1>{dish.name}</h1>
                             </div>
-                            {dish.calories ?  dish.calories+' Cal' : 'No calorie information'}
+                            {dish.calorie ?  dish.calorie+' Cal' : 'No calorie information'}
                             {'$' + dish.price}
 
                 </div>
-                <button className='dish-detail-add-to-cart-button'>Add 1 to Order  •  {dish.price}</button>
                 </div>
+                {sessionUser&&<>
+                    <div className='dish-detail-quantity-selector-container'>
+                <select className='shopping-cart-detail-select-field' 
+       value={quantity} 
+       onChange={(e)=>setQuantity(e.target.value)} 
+       >
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+            <option value='6'>6</option>
+            <option value='7'>7</option>
+            <option value='8'>8</option>
+            <option value='9'>9</option>
+            <option value='10'>10</option>
+
+       </select>
+                    </div>
+                <button className='dish-detail-add-to-cart-button' onClick={handleAddToCartClick}>Add {quantity} to Order  •  {dish.price}</button>
+                </>}
+                {
+                    !sessionUser&&<div className='dish-detail-login-to-order-container'>
+                        <OpenModalButton
+          buttonText="Log In"
+          modalComponent={<LoginFormModal />}
+        /> To Start an Order
+
+                        </div>
+                }
+                
+
                 
                 </div>
+                
+                
         </div>
     )
 }

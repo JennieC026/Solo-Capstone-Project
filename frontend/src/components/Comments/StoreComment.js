@@ -31,7 +31,7 @@ function StoreComment({store}){
                         <div className='store-detail-single-comment-container'>
                             <div className='store-detail-single-comment-user-avatar-info-container'>
                             <div className='store-detail-single-comment-user-avatar'>
-                                <img src={comment.User.photoUrl} alt={comment.User.firstName}/>
+                                <img src={comment.User.photoUrl} alt={comment.User.firstName} className='user-profile-user-avatar-img'/>
                             </div>
                             <div className='store-detail-single-comment-user-name-created-time-star-rating-container'>
                                 <div className='store-detail-single-comment-user-name-star-rating-container'>

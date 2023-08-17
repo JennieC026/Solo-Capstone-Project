@@ -6,7 +6,7 @@ const {findBiggestCategory} = require('../../utils/categoryTools');
 
 const router = express.Router();
 
-
+//find store dishes
 router.get('/:storeId/dishes', async (req, res) => {
     const dishes = await Dish.findAll({
         where:{

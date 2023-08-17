@@ -6,6 +6,8 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { ModalProvider, Modal } from "./context/Modal";
+import { LeftSideModalProvider, LeftSideModal } from "./context/SideModal/LeftSideModal";
+import { RightSideModalProvider, RightSideModal } from "./context/SideModal/RightSideModal"; 
 import App from "./App";
 
 import configureStore from "./store";
@@ -25,14 +27,22 @@ if (process.env.NODE_ENV !== "production") {
 
 function Root() {
   return (
-    <ModalProvider>
+    <RightSideModalProvider>
+
+    <LeftSideModalProvider>
+      <ModalProvider>
       <Provider store={store}>
         <BrowserRouter>
           <App />
           <Modal />
+          <LeftSideModal />
+          <RightSideModal />
         </BrowserRouter>
       </Provider>
     </ModalProvider>
+      </LeftSideModalProvider>
+    </RightSideModalProvider>
+    
   );
 }
 

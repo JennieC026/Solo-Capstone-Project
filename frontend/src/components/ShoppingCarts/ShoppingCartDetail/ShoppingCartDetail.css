@@ -1,0 +1,14 @@
+.shopping-cart-detail-single-item-image-url-container{
+    display: flex;
+}
+
+.shopping-cart-detail-single-item-image-url{
+    width: 48px;
+    height: 48px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(212, 212, 212);
+
+}

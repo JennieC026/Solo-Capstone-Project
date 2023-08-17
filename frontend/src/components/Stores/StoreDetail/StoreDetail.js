@@ -14,7 +14,7 @@ function StoreDetail(){
     const {storeId} = useParams();
     const store = useSelector(state => state.stores[storeId]);
     const dishes = useSelector(state => Object.values(state.dishes));//cause render, try to convert the array outside of the selector if have time
-
+ 
     useEffect(() => {
         if(!store){
             dispatch(fetchAllStores());
@@ -22,10 +22,10 @@ function StoreDetail(){
     }, [dispatch]);
 
     useEffect(() => {
-        if(dishes.length === 0){
+   
             dispatch(fetchStoreDishes(storeId));
-        }
-    }, [dispatch]);
+  
+    }, [dispatch,storeId]);
 
     const myRef = useRef(null);
     const handleScrollButtonClick = () => {

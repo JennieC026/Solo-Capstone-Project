@@ -1,0 +1,21 @@
+#left-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+  }
+
+  #left-modal-content{
+    position: absolute;
+    background-color: white;
+    width: 350px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-right: 1px solid #ccc;
+  }

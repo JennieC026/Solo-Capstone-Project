@@ -28,7 +28,6 @@ const dishesReducer = (state = initialState, action) => {
                 allDishes[dish.id] = dish;
             });
             return {
-                ...state,
                 ...allDishes,
             };
         }

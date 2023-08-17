@@ -31,9 +31,10 @@ const validateSignup = [
 
  router.post('/',validateSignup,
  async(req,res)=>{
-    const { firstName,lastName,email, password, username } = req.body;
+    const { firstName,lastName,email, password, username, phoneNumber } = req.body;
+    console.log('phone number',phoneNumber)
     const hashedPassword = bcrypt.hashSync(password);
-    const user = await User.create({firstName,lastName,email,username,hashedPassword});
+    const user = await User.create({firstName,lastName,email,username,hashedPassword,photoUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1139063953331331153/amber-profile_copy.jpg',phoneNumber});
 
     const safeUser = {
       id:user.id,
@@ -41,6 +42,8 @@ const validateSignup = [
       lastName:user.lastName,
       email:user.email,
       username:user.username,
+      photoUrl:user.photoUrl,
+      phoneNumber:user.phoneNumber,
     };
 
     await setTokenCookie(res, safeUser);

@@ -1,0 +1,31 @@
+#right-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+  }
+
+   
+  #right-modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  #right-modal-content{
+    position: absolute;
+    background-color: white;
+    width: 350px;
+    height: 100%;
+    left: 88%;
+    top: 0;
+    border-right: 1px solid #ccc;
+  }
