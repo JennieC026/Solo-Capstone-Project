@@ -5,6 +5,8 @@ import { fetchAllStores } from '../../store/stores';
 import { useParams } from 'react-router-dom';
 import { NavLink,useHistory } from 'react-router-dom/cjs/react-router-dom';
 import { fetchCreateShoppingCart,fetchEditShoppingCart,fetchAllShoppingCarts } from '../../store/shoppingcarts';
+import OpenModalButton from '../OpenModalButton';
+import LoginFormModal from '../LoginFormModal';
 import './DishDetail.css'
 
 function DishDetail(){
@@ -14,6 +16,7 @@ function DishDetail(){
     const dish = useSelector(state => state.dishes[dishId]);
     const store = useSelector(state => state.stores[dish?.storeId])
     const shoppingCarts = useSelector(state => state.shoppingCarts)
+    const sessionUser = useSelector(state => state.session.user);
     const shoppingCartsArr = Object.values(shoppingCarts).filter(shoppingCart => shoppingCart.status === 'open');
     const shoppingCartDishes = shoppingCartsArr?.find(shoppingCart => shoppingCart.storeId === parseInt(dish?.storeId))?.shoppingCartDishes;
     const shoppingCartDish = shoppingCartDishes?.find(shoppingCartDish => shoppingCartDish.dishId === parseInt(dishId));
@@ -76,7 +79,9 @@ function DishDetail(){
                             {'$' + dish.price}
 
                 </div>
-                <div className='dish-detail-quantity-selector-container'>
+                </div>
+                {sessionUser&&<>
+                    <div className='dish-detail-quantity-selector-container'>
                 <select className='shopping-cart-detail-select-field' 
        value={quantity} 
        onChange={(e)=>setQuantity(e.target.value)} 
@@ -95,9 +100,22 @@ function DishDetail(){
        </select>
                     </div>
                 <button className='dish-detail-add-to-cart-button' onClick={handleAddToCartClick}>Add {quantity} to Order  •  {dish.price}</button>
-                </div>
+                </>}
+                {
+                    !sessionUser&&<div className='dish-detail-login-to-order-container'>
+                        <OpenModalButton
+          buttonText="Log In"
+          modalComponent={<LoginFormModal />}
+        /> To Start an Order
+
+                        </div>
+                }
+                
+
                 
                 </div>
+                
+                
         </div>
     )
 }

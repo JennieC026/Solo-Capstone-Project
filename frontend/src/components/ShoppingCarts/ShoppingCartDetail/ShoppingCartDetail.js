@@ -32,7 +32,6 @@ function ShoppingCartDetail({shoppingCart}){
     }
 
     const handleCloseModal = () => {
-        console.log('hitted close');
         closeModal();
     }
     
@@ -72,7 +71,7 @@ function ShoppingCartDetail({shoppingCart}){
                                             <div className='shopping-cart-detail-single-item-quantity-selector'>
                                                 <ShoppingCartSelector shoppingCartDish={shoppingCartDish} handleCloseModal={handleCloseModal}/>
                                             <div className='shopping-cart-detail-single-item-total'>
-                                                ${shoppingCartDish?.Dish.price * shoppingCartDish?.quantity}
+                                                ${(shoppingCartDish?.Dish.price * shoppingCartDish?.quantity).toFixed(2)}
                                                 </div>
                                                 </div>
 

@@ -57,7 +57,7 @@ router.get('/', async (req, res) => {
             shoppingCartObj.total += shoppingCartDish.Dish.price * shoppingCartDish.quantity;
             shoppingCartObj.dishAmount += shoppingCartDish.quantity;
         }
-        
+        shoppingCartObj.total = (shoppingCartObj.total).toFixed(2)
        
         return shoppingCartObj;
     })
@@ -155,7 +155,7 @@ router.post('/:shoppingCartId/shoppingCartDish/:dishId', async (req, res) => {
         existingShoppingCartDish.quantity = Number(existingShoppingCartDish.quantity) + Number(quantity);
         await existingShoppingCartDish.save();
         const newShoppingCart = await ShoppingCart.findByPk(targetShoppingCart.id,{
-            attributes: ['id', 'userId', 'storeId','createdAt','updatedAt'],
+            attributes: ['id', 'userId', 'storeId','status','createdAt','updatedAt'],
             include: [{
                 model: ShoppingCartDish,
                 include: [Dish],
@@ -179,7 +179,7 @@ router.post('/:shoppingCartId/shoppingCartDish/:dishId', async (req, res) => {
             quantity
         });
         const newShoppingCart = await ShoppingCart.findByPk(targetShoppingCart.id,{
-            attributes: ['id', 'userId', 'storeId','createdAt','updatedAt'],
+            attributes: ['id', 'userId', 'storeId','status','createdAt','updatedAt'],
             include: [{
                 model: ShoppingCartDish,
                 include: [Dish],
@@ -222,7 +222,7 @@ router.post('/new', async (req, res) => {
         quantity
     });
     const newShoppingCart = await ShoppingCart.findByPk(shoppingCart.id,{
-        attributes: ['id', 'userId', 'storeId','createdAt','updatedAt'],
+        attributes: ['id', 'userId', 'storeId','status','createdAt','updatedAt'],
         include: [{
             model: ShoppingCartDish,
             include: [Dish],
@@ -301,7 +301,7 @@ console.log('newCart',newShoppingCart)
         return res.json({message:"Order deleted"})
     } else{
         const newShoppingCart = await ShoppingCart.findByPk(targetShoppingCart.id,{
-            attributes: ['id', 'userId', 'storeId','createdAt','updatedAt'],
+            attributes: ['id', 'userId', 'storeId','status','createdAt','updatedAt'],
             include: [{
                 model: ShoppingCartDish,
                 include: [Dish],

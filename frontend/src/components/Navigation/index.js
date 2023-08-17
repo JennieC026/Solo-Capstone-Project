@@ -78,7 +78,7 @@ function Navigation({ isLoaded }) {
            modalComponent={<UserProfileModal />}
         />
         <div>
-        <ProfileButton user={sessionUser} />
+        {/* <ProfileButton user={sessionUser} /> */}
       </div>
       <div>
       {cartIndexButton}
@@ -107,7 +107,7 @@ function Navigation({ isLoaded }) {
   return (
     <div>
       <div>
-        <NavLink exact to="/">
+        <NavLink exact to="/stores">
           Home
         </NavLink>
       </div>

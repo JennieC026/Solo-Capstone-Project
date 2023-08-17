@@ -30,12 +30,11 @@ const ShoppingCartSelector = ({shoppingCartDish,handleCloseModal}) => {
 
     const handleQuantityChange = async(e)=>{
         const value = e.target.value;
-        if(value === 'remove'&&shoppingCart.ShoppingCartDishes.length === 1){
-           await dispatch(fetchRemoveShoppingCart(shoppingCart.id,shoppingCartDish.id));
-           await dispatch(fetchAllShoppingCarts());
-           console.log('shoppingCartState',shoppingCartState)  
+        if(value === 'remove'&&shoppingCartState.ShoppingCartDishes.length === 1){
+           await dispatch(fetchRemoveShoppingCart(shoppingCartState.id,shoppingCartDish.id));
+           await dispatch(fetchAllShoppingCarts()); 
            handleCloseModal(); 
-           history.push(`/stores/${shoppingCart.storeId}`);
+           history.push(`/stores/${shoppingCartState.storeId}`);
 
             return;
 

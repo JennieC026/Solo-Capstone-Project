@@ -89,7 +89,7 @@ module.exports = {
         price: 3.94,
         calorie: 500,
         categoryId: 1,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1139076619919687802/l-intro-1667318305.jpg'
+        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141528156122120202/image.png'
 
       },
       {

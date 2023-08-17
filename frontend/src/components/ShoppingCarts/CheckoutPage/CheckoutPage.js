@@ -83,7 +83,7 @@ function CheckoutPage(){
                     </div>
                     {showCommentBar && !existComment && <div className="order-comment-container">
                         <div className="order-comment-header">
-                        <h3>Leave a comment for {store?.name}</h3>
+                        <h3>Leave a comment for {store?.name} (Optional)</h3>
                         </div>
                         <div className="order-comment-input-container">
                             <textarea className="order-comment-input" placeholder="Leave a comment for the store" onChange={(e) => setComment(e.target.value)}></textarea>
