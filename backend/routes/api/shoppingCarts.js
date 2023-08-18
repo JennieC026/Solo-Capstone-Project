@@ -327,6 +327,39 @@ router.delete('/:shoppingCartId/shoppingCartDish/:shoppingCartDishId', async (re
    
 });
 
+//delete an order
+router.delete('/:shoppingCartId', async (req, res) => {
+    const {user} = req;
+    if(!user){
+        return res.status(401).json({
+            message:"Authentication required"})
+    }
+    const targetShoppingCart = await ShoppingCart.findByPk(parseInt(req.params.shoppingCartId),{
+        include: [{
+            model: ShoppingCartDish,
+            include: [Dish],
+        },
+    ],
+    });
+    if(!targetShoppingCart){
+        return res.status(404).json({
+            message:"Order couldn't be found"
+        })
+    }
+    if(targetShoppingCart.userId !== user.id){
+        return res.status(403).json({
+            message:"Forbidden"
+        })
+    }
+    if(targetShoppingCart.status !== 'open'){
+        return res.status(403).json({
+            message:"Can't delete a closed order"
+        })
+    }
+    await targetShoppingCart.destroy();
+    return res.json({message:"Order deleted"});
+});
+
 
 
 
