@@ -12,9 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Store.belongsTo(models.StoreCategory,{foreignKey:'categoryId'});
-      Store.hasMany(models.Dish,{foreignKey:'storeId'});
-      Store.hasMany(models.Comment,{foreignKey:'storeId'});
-      Store.hasMany(models.ShoppingCart,{foreignKey:'storeId'});
+      Store.hasMany(models.Dish,{foreignKey:'storeId',onDelete: 'CASCADE'});
+      Store.hasMany(models.Comment,{foreignKey:'storeId',onDelete: 'CASCADE'});
+      Store.hasMany(models.ShoppingCart,{foreignKey:'storeId',onDelete: 'CASCADE'});
     }
   }
   Store.init({

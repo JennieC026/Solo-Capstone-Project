@@ -19,7 +19,8 @@ module.exports = {
         references:{
           model:'ShoppingCarts',
           key:'id'
-        }
+        },
+        onDelete:'CASCADE'
       },
       dishId: {
         type: Sequelize.INTEGER,
