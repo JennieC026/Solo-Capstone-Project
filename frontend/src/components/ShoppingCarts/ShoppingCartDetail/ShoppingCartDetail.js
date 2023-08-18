@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import ShoppingCartSelector from '../ShoppingCartSelector/ShoppingCartSelector';
 import { fetchAllShoppingCarts,fetchCheckoutShoppingCart } from '../../../store/shoppingcarts';
 import { useRightSideModal } from '../../../context/SideModal/RightSideModal';
+import { fetchRemoveWholeShoppingCart } from '../../../store/shoppingcarts';
 import './ShoppingCartDetail.css'
 
 
@@ -16,6 +17,7 @@ function ShoppingCartDetail({shoppingCart}){
     const {closeModal} = useRightSideModal();
     const [shoppingCartDishes, setShoppingCartDishes] = useState(shoppingCart?.ShoppingCartDishes);
     const [newShoppingCart, setNewShoppingCart] = useState(shoppingCart);
+    const [showMenu, setShowMenu] = useState(false);
 
     useEffect(()=>{
        if(updatedShoppingCart&&updatedShoppingCart?.ShoppingCartDishes&&updatedShoppingCart.id===shoppingCart.id){
@@ -34,17 +36,39 @@ function ShoppingCartDetail({shoppingCart}){
     const handleCloseModal = () => {
         closeModal();
     }
-    
-    
+    const handleAddItems = () => {
+        closeModal();
+        history.push(`/stores/${shoppingCart.storeId}`);
+
+    }
+    const handleMenuClick = () => {
+        setShowMenu(!showMenu);
+    }
+
+    const handleClearCart = async(e) => {
+        e.preventDefault();
+        await dispatch(fetchRemoveWholeShoppingCart(shoppingCart.id));
+        await dispatch(fetchAllShoppingCarts());
+        closeModal();
+    }
+    const handleCloseModalClick = () => {
+        closeModal();
+    }
+
     return(
         <div>
             <div className='shopping-cart-detail-container'>
+                <div className='shopping-cart-detail-close-modal-button' onClick={handleCloseModalClick}>
+                <i class="fa-solid fa-x"></i>
+                    </div>
                 <div className='shopping-cart-detail-store-name-add-items-button-container'>
                 <div className='shopping-cart-detail-store-name'>
                     {store?.name}
                     </div>
                     <div className='shopping-cart-add-items-menu-button'>
-                        <button>...</button>
+                        <button onClick={handleMenuClick}>...</button>
+                        {showMenu&&<button onClick={handleClearCart}>Clear Cart</button>}
+                        {showMenu&&<button onClick={handleMenuClick}>Add Items</button>}
                         </div>
                     </div>
                     <div className='shopping-cart-detail-order-detail-items-container'>
@@ -85,7 +109,7 @@ function ShoppingCartDetail({shoppingCart}){
                                     {newShoppingCart?.total}
                                     </div>
                                     <button onClick={handleCheckout}>Checkout</button>
-                                    <button>Add Items</button>
+                                    <button onClick={handleAddItems}>Add Items</button>
                                 </div>
                         </div>
                 
