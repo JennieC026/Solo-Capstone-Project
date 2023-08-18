@@ -68,7 +68,7 @@ function ShoppingCartDetail({shoppingCart}){
                     <div className='shopping-cart-add-items-menu-button'>
                         <button onClick={handleMenuClick}>...</button>
                         {showMenu&&<button onClick={handleClearCart}>Clear Cart</button>}
-                        {showMenu&&<button onClick={handleMenuClick}>Add Items</button>}
+                        {showMenu&&<button onClick={handleAddItems}>Add Items</button>}
                         </div>
                     </div>
                     <div className='shopping-cart-detail-order-detail-items-container'>

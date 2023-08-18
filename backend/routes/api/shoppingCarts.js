@@ -96,13 +96,15 @@ router.put('/:shoppingCartId/shoppingCartDish/:shoppingCartDishId', async (req, 
         })
     }
     const {quantity} = req.body;
+    console.log('hittttttttttted')
  
     const existingShoppingCartDish = await ShoppingCartDish.findOne({
         where:{
-            shoppingCartId:targetShoppingCart.id,
-            dishId:req.params.shoppingCartDishId
+            shoppingCartId:req.params.shoppingCartId,
+            id:req.params.shoppingCartDishId
         }
     });
+    console.log('existingSho',existingShoppingCartDish)
   
     existingShoppingCartDish.quantity = quantity;
         await existingShoppingCartDish.save();
