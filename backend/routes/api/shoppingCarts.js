@@ -12,7 +12,13 @@ router.put('/:shoppingCartId/checkout', async (req, res) => {
         return res.status(401).json({
             message:"Authentication required"})
     }
-    const targetShoppingCart = await ShoppingCart.findByPk(parseInt(req.params.shoppingCartId));
+    const targetShoppingCart = await ShoppingCart.findByPk(parseInt(req.params.shoppingCartId),{
+        include: [{
+            model: ShoppingCartDish,
+            include: [Dish],
+        },
+    ],
+    });
     if(!targetShoppingCart){
         return res.status(404).json({
             message:"Order couldn't be found"
@@ -294,7 +300,6 @@ router.delete('/:shoppingCartId/shoppingCartDish/:shoppingCartDishId', async (re
         },
     ],
 });
-console.log('newCart',newShoppingCart)
     if(!newShoppingCart.ShoppingCartDishes||newShoppingCart.ShoppingCartDishes?.length === 0){
         console.log('destroy route hitted')
         await targetShoppingCart.destroy();
