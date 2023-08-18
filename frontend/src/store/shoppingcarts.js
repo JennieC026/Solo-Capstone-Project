@@ -6,6 +6,7 @@ const REMOVE_SHOPPING_CART = "shoppingCarts/REMOVE_SHOPPING_CART";
 const REMOVE_DISH_FROM_SHOPPING_CART = "shoppingCarts/REMOVE_DISH_FROM_SHOPPING_CART";
 const CHECKOUT_SHOPPING_CART = "shoppingCarts/CHECKOUT_SHOPPING_CART";
 const CHANGE_DISH_QUANTITY = "shoppingCarts/CHANGE_DISH_QUANTITY";
+const REMOVE_WHOLE_SHOPPING_CART = "shoppingCarts/REMOVE_WHOLE_SHOPPING_CART";
 
 export const loadAllShoppingCarts = (shoppingCarts) => {
     return {
@@ -54,6 +55,13 @@ export const changeDishQuantity = (shoppingCart) => {
     return {
         type: CHANGE_DISH_QUANTITY,
         shoppingCart
+    }
+}
+
+export const removeWholeShoppingCart = (shoppingCartId) => {
+    return {
+        type: REMOVE_WHOLE_SHOPPING_CART,
+        shoppingCartId,
     }
 }
 
@@ -112,7 +120,6 @@ export const fetchRemoveShoppingCart = (shoppingCartId,dishId) => async (dispatc
     }
     const removedShoppingCart = await response.json();
     if(removedShoppingCart.message==="Order deleted"){
-        console.log('delete Order Hitted')
         dispatch(removeShoppingCart(shoppingCartId));
         return response;
 
@@ -153,6 +160,19 @@ export const fetchChangeDishQuantity = (shoppingCartId,dishId,quantity) => async
     return response;
 }
 
+export const fetchRemoveWholeShoppingCart = (shoppingCartId) => async (dispatch) =>{
+    const response = await csrfFetch(`/api/shoppingCarts/${shoppingCartId}`, {
+        method: "DELETE",
+    });
+    if(!(response.ok)){
+        const data = await response.json();
+        throw data;
+    }
+    dispatch(removeShoppingCart(shoppingCartId));
+        return response;
+}
+
+
 const initialState = {};
 
 
@@ -186,6 +206,11 @@ const shoppingCartsReducer = (state = initialState, action) => {
         }
         case CHANGE_DISH_QUANTITY: {
             return {...state,[action.shoppingCart.id]: action.shoppingCart};
+        }
+        case REMOVE_WHOLE_SHOPPING_CART: {
+            const newState = {...state};
+            delete newState[action.shoppingCartId];
+            return newState;
         }
         default:
             return state;

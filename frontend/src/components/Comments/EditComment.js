@@ -9,10 +9,31 @@ function EditComment({comment,setShowUpdateCommentOrigin}){
     const [updateContent,setUpdateContent] = useState(comment.content);
     const [updateStars,setUpdateStars] = useState(comment.starRating);
     const [showUpdateComment,setShowUpdateComment] = useState(true);
+    const [errors,setErrors] = useState({});
+    const [isSubmitting,setIsSubmitting] = useState(false);
+
     const [hoveredStar, setHoveredStar] = useState(0);
+
+    useEffect(()=>{
+        
+        const errorObj = {};
+
+        if(updateContent.length > 200) errorObj.comment = 'Comment cannot be more than 200 characters';
+                   
+        if(updateContent.length === 0) errorObj.comment = 'Comment cannot be empty';
+
+        if(updateStars === 0) errorObj.stars = 'Please select a star rating';
+
+        setErrors(errorObj);
+    
+},[updateContent,updateStars])
 
     const handleUpdateCommentClick = async (e) => {
         e.preventDefault();
+        setIsSubmitting(true);
+        if(Object.keys(errors).length){
+            return;
+        }
         const data = {
             ...comment,
             content:updateContent,
@@ -45,6 +66,8 @@ function EditComment({comment,setShowUpdateCommentOrigin}){
         )
     })}</div>)
 
+    const disabled = updateContent.length > 200 ;
+
 
     return(<div>
         {showUpdateComment && (
@@ -60,8 +83,10 @@ function EditComment({comment,setShowUpdateCommentOrigin}){
                     
 
                     </textarea>
+                    {isSubmitting && errors.comment && <div className="comment-error-container">{errors.comment}</div>}
                     {starRating}
-                    <button disabled={updateContent===comment.content} className="store-detail-edit-comment-form-button">Submit</button>
+                    {isSubmitting && errors.stars && <div className="comment-error-container">{errors.stars}</div>}
+                    <button disabled={updateContent===comment.content||disabled} className="store-detail-edit-comment-form-button">Submit</button>
                 </form>
             </div>
         )
