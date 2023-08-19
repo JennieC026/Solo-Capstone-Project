@@ -19,14 +19,13 @@ function StoreIndex(){
     if(stores.length === 0){
         return(<div>Loading...</div>)
     }
+     
     
     return(
-        <div>
+        <div className='store-index-component-container'>
             <div className='store-index-categories-header'>
-                Categories Placeholder
             </div>
             <div className='store-index-recommend-area'>
-                Recommend Area Placeholder
             </div>
             <div className='store-index-filter-all-stores-container'>
                 <div className='store-index-filter'>All Store Filter Placeholder</div>
@@ -42,10 +41,22 @@ function StoreIndex(){
                                     {store.name}
                                 </div>
                                 <div className='store-index-card-store-delivery-info'>
-                                    ${store.deliveryFee}Delivery Fee
+                                    ${store.deliveryFee} Delivery Fee
                                 </div>
                                 <div className='store-index-card-store-starRating'>
-                                    {store.starRating}
+                                    <div className='store-index-card-store-starRating-text'>
+                                    {store.avgStarRating===0?'No Reviews Yet':store.avgStarRating}
+                                    </div>
+                                    <div className='store-index-card-store-starRating-stars'>
+                                    {store.avgStarRating===0?'': <div>
+      {Array.from({ length: 5 }).map((_, index) => (
+        <i
+          key={index}
+          className={`fa-solid fa-star ${index <= store.avgStarRating ? 'black-star' : 'grey-star'}`}
+        ></i>
+      ))}
+    </div>}
+    </div>
                                 </div>
                             </div>
                             </NavLink>

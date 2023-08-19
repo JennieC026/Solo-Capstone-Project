@@ -1,3 +1,89 @@
 .hidden {
     display: none;
   }
+
+  .navigation-bar-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    height: 60px;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .amber-eats-logo{
+    height: 40px;
+    width: 160px;
+    margin-left: 20px;
+  }
+
+  .left-side-modal-button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 40px;
+  }
+
+  .left-side-profile-button-container button{
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 20px;
+  height: 10px;
+  width: 20px;
+  cursor: pointer;
+    
+  }
+
+  .navigation-shopping-cart-button-container button{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 20px;
+  margin: 4px 30px;
+  cursor: pointer;
+  border-radius: 22px;
+  background: black;
+  color: #ffffff;
+  font-size: 17px;
+  height: 45px;
+  width: 100px;
+  }
+
+  .navigation-search-bar-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 40px;
+  }
+
+  .navigation-search-bar-container i{
+    position: relative;
+    cursor: pointer;
+    left: 32px;
+    font-size: 12px;
+  }
+
+  .navigation-search-bar-container input{
+    border: none;
+    border-radius: 22px;
+    background-color: #e4e4e4;
+    padding-left: 35px;
+    margin: 4px 2px;
+    font-size: 17px;
+    height: 35px;
+    width: 400px;
+    
+  }
+
+  .navigation-search-bar-container input:focus{
+    outline: none;
+    border: none;
+    
+  }

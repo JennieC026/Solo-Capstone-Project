@@ -1,0 +1,100 @@
+
+.store-index-component-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.store-index-filter-all-stores-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+
+.all-stores-container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.store-index-card-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px;
+  width: 300px;
+  height: 200px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.store-index-card-image-container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 300px;
+    height: 120px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.store-index-card-image{
+    width: 400px;
+    height: 100%;
+    object-fit: cover;
+}
+
+.black-star {
+    color: black;
+    font-size: 12px;
+  }
+  
+  .grey-star {
+    color: rgb(202, 202, 202);
+    font-size: 12px;
+  }
+
+.store-index-card{
+    text-decoration: none;
+    color: inherit;
+}
+
+.store-index-card-store-starRating{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.store-index-card-store-name{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 5px;
+ 
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Helvetica;
+}
+
+.store-index-card-store-delivery-info{
+    font-family: Helvetica;
+    font-size: 13px;
+}
+
+.store-index-card-store-starRating-text{
+    font-family: Helvetica;
+}
+.store-index-card-store-starRating-text{
+    font-family: Helvetica;
+    font-size: 13px;
+}
