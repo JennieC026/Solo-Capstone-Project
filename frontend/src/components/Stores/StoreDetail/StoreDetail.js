@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom';
 import StoreComment from '../../Comments/StoreComment';
 
+
 import './StoreDetail.css'
 
 
@@ -27,9 +28,18 @@ function StoreDetail(){
   
     }, [dispatch,storeId]);
 
+    
+    
+
     const myRef = useRef(null);
     const handleScrollButtonClick = () => {
         myRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    const categoriesArr = ['Most Popular','Picked for you','Featured Items','Drink','Entree','Burgers']
+
+    const handleFavoriteClick = () => {
+        alert('favorite feature coming soon!');
     }
 
     if(!store){
@@ -37,22 +47,34 @@ function StoreDetail(){
     }
     
     return(
-        <div>
-           <div className='store-detail-banner'>
-            <img src={store.bannerUrl ? store.bannerUrl : "https://cdn.discordapp.com/attachments/811082976501825539/1139436150923210772/images_3.jpg" } alt={store.name}/>
+        <div className='store-detail-component'>
+            <div className='store-detail-banner'>
+                <i class="fa-solid fa-heart banner-icon" onClick={handleFavoriteClick}></i>
+                <div className='store-detail-banner-img-container'>
+
+                <img className='banner-image' src={store.bannerUrl ? store.bannerUrl : "https://cdn.discordapp.com/attachments/811082976501825539/1139436150923210772/images_3.jpg" } alt={store.name}/>
+                </div>
             </div>
             <div className='store-detail-info-container'>
                 <div className='store-detail-info-name'>
-                    <h1>{store.name}</h1>
+                    <h1 className='store-name'>{store.name}</h1>
                     </div>
                     <div className='store-detail-info-starRating-price'>
-                    <i class="fa-solid fa-star"></i>{store.avgStarRating} ({store.Comments? store.Comments.length+'ratings' : '0 rating'}) • {store.category} • {store.costLevel} • <button onClick={handleScrollButtonClick}>View Reviews</button>
+                    <i class="fa-solid fa-star"></i>{store.avgStarRating} ({(store.Comments?.length || 0) + ' Rating' + (store.Comments?.length > 1 ? 's' : '')}) • {store.category} • {store.costLevel} • <span className='view-review' onClick={handleScrollButtonClick}>View Reviews</span>
                     </div>
                     <div className='store-detail-info-delivery'>
                         {store.deliveryFee ? '$'+store.deliveryFee +' Delivery Fee'  : 'No Delivery Fee'}
                     </div>
                     <div className='store-detail-categories-all-dishes-container'>
-                        <div className='store-detail-categories'>Categories Placeholder</div>
+                        <div className='store-detail-categories'>
+                            {
+                                categoriesArr.map((category) => (
+                                    <div className='store-detail-single-category'>
+                                        {category}
+                                        </div>
+                                ))
+                            }
+                        </div>
                         <div className='store-detail-all-dishes'>
                             <ol className='store-detail-all-dishes-list'>
                             {dishes.map((dish) => (
@@ -66,7 +88,7 @@ function StoreDetail(){
                                     {dish.name}
                                 </div>
                                 <div className='dish-index-card-dish-price-calories'>
-                                    {'$'+ dish.price} • {dish.calories}  Cal
+                                    {'$'+ dish.price} • {dish.calorie}  Cal
                                     </div>
                                 </div>
                             </NavLink>
@@ -77,7 +99,7 @@ function StoreDetail(){
                         </div>
 
                 </div>
-                <div ref={myRef}><StoreComment store={store}/></div>
+                <div ref={myRef} className='store-detail-comment-component-container'><StoreComment store={store}/></div>
                 
         </div>
     )

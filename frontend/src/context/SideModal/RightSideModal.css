@@ -23,9 +23,10 @@
   #right-modal-content{
     position: absolute;
     background-color: white;
-    width: 350px;
+    width: 420px;
+ 
     height: 100%;
-    left: 88%;
+    right:0%;
     top: 0;
     border-right: 1px solid #ccc;
   }

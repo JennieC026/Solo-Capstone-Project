@@ -1,4 +1,4 @@
-import './StoreComment.js'
+import './StoreComment.css'
 import {useState}from'react';
 import{useDispatch,useSelector}from'react-redux'
 import EditComment from './EditComment.js';
@@ -23,8 +23,42 @@ function StoreComment({store}){
                     <div>Be the first one to comment!</div>
                 )
             }
+
+            const calculateTimeAgo = (time) => {
+                const timeAgo = Date.now() - new Date(time);
+            
+                const seconds = Math.floor(timeAgo / 1000);
+                const minutes = Math.floor(seconds / 60);
+                const hours = Math.floor(minutes / 60);
+                const days = Math.floor(hours / 24);
+                const weeks = Math.floor(days / 7);
+                const months = Math.floor(days / 30);
+                const years = Math.floor(days / 365);
+            
+                if (years > 0) {
+                    return years + (years === 1 ? ' year ago' : ' years ago');
+                }
+                if (months > 0) {
+                    return months + (months === 1 ? ' month ago' : ' months ago');
+                }
+                if (weeks > 0) {
+                    return weeks + (weeks === 1 ? ' week ago' : ' weeks ago');
+                }
+                if (days > 0) {
+                    return days + (days === 1 ? ' day ago' : ' days ago');
+                }
+                if (hours > 0) {
+                    return hours + (hours === 1 ? ' hour ago' : ' hours ago');
+                }
+                if (minutes > 0) {
+                    return minutes + (minutes === 1 ? ' minute ago' : ' minutes ago');
+                }
+                return seconds + (seconds === 1 ? ' second ago' : ' seconds ago');
+            };
+               
+
          return (
-             <div>
+            
                 <div className='store-detail-all-comments-container'>
                 <ol className='store-detail-comments-map-container'>
                     {comments.map((comment)=>(
@@ -38,17 +72,19 @@ function StoreComment({store}){
                                 <div className='store-detail-single-comment-user-name'>
                                 {comment.User.firstName +' '+ comment.User.lastName[0]+'.'}
                             </div>
-                            <div className='store-detail-single-comment-star-rating'>
+                            <div className='store-detail-single-comment-created-time'>
                             <div>
-                                 {Array(comment.starRating).fill().map((_, index) => (
-                                    <i key={index} className="fa-solid fa-star"></i>
-                                ))}
+                            {calculateTimeAgo(comment.updatedAt)}
+                                 
                             </div>
                             </div>
                                 </div>
                             
-                            <div className='store-detail-single-comment-created-time'>
-                                {comment.updatedAt}
+                            <div className='store-detail-single-comment-star-rating'>
+                            {Array(comment.starRating).fill().map((_, index) => (
+                                    <i key={index} className="fa-solid fa-star"></i>
+                                ))}
+                                
                             </div>
                             </div>
                             </div>
@@ -80,7 +116,7 @@ function StoreComment({store}){
                 </ol>
              </div>
                  
-             </div>
+             
          )
         }else{
             return(

@@ -43,11 +43,17 @@ function UserProfileModal(){
                     {sessionUser?.username}
                     </div>
                     </div>
+                    <div className='user-profile-user-profile-menu'>
                     <div className='user-profile-user-pass-order'>
-                        <NavLink to='shoppingCarts/past'>Orders</NavLink>
+                        <NavLink to='shoppingCarts/past' className='user-profile-pass-order-icon-title-link'>
+                            <div className='user-profile-pass-order-icon-title'>
+                                <i class="fa-solid fa-clipboard-list"></i>
+                                <div>Orders</div></div></NavLink>
                         </div>
-                        <div className='user-profile-user-favorite'>Favorite</div>
-                        <button onClick={logout}>Log Out</button>
+                        <div className='user-profile-user-favorite'><i class="fa-solid fa-heart"></i>
+                        <div>Favorites</div></div>
+                        <button className='user-profile-logout-button' onClick={logout}>Log Out</button>
+                        </div>
     
                 </div>
             }

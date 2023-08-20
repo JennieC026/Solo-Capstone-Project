@@ -63,6 +63,7 @@ const ShoppingCartSelector = ({shoppingCartDish,handleCloseModal}) => {
     
 return (
     <div className='shopping-cart-detail-select-field-container'>
+        <i class="fa-solid fa-angle-down"></i>
        <select className='shopping-cart-detail-select-field' 
        value={quantity} 
        onChange={handleQuantityChange} 
