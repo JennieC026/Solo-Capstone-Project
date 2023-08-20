@@ -1,0 +1,139 @@
+
+.dish-detail-component-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width:100%
+}
+
+.dish-detail-component{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width:80%
+}
+
+
+.dish-detail-back-to-store-link{
+    
+    font-size: 20px;
+    font-weight: 500;
+    font-family: sans-serif;
+    line-height: 36px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.dish-detail-back-link{
+    text-decoration: none;
+    color: inherit;
+}
+
+.dish-detail-back-to-store-link i{
+    margin-right: 10px;
+}
+
+.dish-detail-store-link-dish-img-container{
+    margin-right: 30px;
+}
+
+.dish-detail-info-add-button-container{
+    margin-left:30px;
+    margin-top: 55px;
+    width: 500px;
+    height: 500px
+    
+
+}
+
+.dish-detail-info-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+}
+
+.dish-detail-info-name{
+    font-size: 35px;
+    font-weight: 700;
+    font-family: sans-serif;
+    line-height: 36px;
+    margin-bottom: 5px;
+}
+
+.dish-detail-info-price{
+    font-size: 22px;
+    font-weight: 700;
+    font-family: sans-serif;
+    line-height: 36px;
+}
+
+.dish-detail-info-calories{
+    font-size: 15px;
+    font-weight: 500;
+    font-family: sans-serif;
+    line-height: 36px;
+    margin-bottom: 20px;
+    color: gray;
+    border-bottom: 1px solid gray;
+}
+
+.dish-detail-quantity-selector-container{
+  margin-bottom: 20px;
+}
+
+.dish-detail-quantity-selector-container i{
+    position: relative;
+    left:48px;
+    top: 2px;
+}
+
+.dish-detail-image-container{
+    width: 500px;
+    height: 500px;
+    overflow: hidden;
+}
+
+.dish-detail-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dish-detail-shopping-cart-detail-select-field{
+    padding-left:17px; 
+    padding-right:7px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 25px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    background-color: #f2f2f2; 
+    border: none;
+    outline: none;
+    appearance: none; 
+    width:60px
+}
+
+.dish-detail-add-to-cart-button{
+    background-color: #000000; 
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    appearance: none; 
+    height: 55px;
+    width: 490px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 5px;
+    font-weight: 500;
+    font-family: sans-serif;
+    line-height: 24px;
+    font-size: 18px;
+}

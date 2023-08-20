@@ -60,29 +60,40 @@ function DishDetail(){
     }
     
     return(
-        <div>
+        <div className='dish-detail-component-container'>
+            <div className='dish-detail-component'>
+                <div className='dish-detail-store-link-dish-img-container'>
             <NavLink to={`/stores/${dish.storeId}`} className='dish-detail-back-link'>
-            <div >
-            Back to {store?.name}
+            <div className='dish-detail-back-to-store-link'>
+            <i class="fa-solid fa-arrow-left"></i>Back to {store?.name}
             </div>
                 </NavLink>
-                <div className='dish-detail-image-info-container'>
+              
                     <div className='dish-detail-image-container'>
                         <img className='dish-detail-image' src={dish.imageUrl} alt={dish.name}/>
                     </div>
+                    </div>
+                    <div className='dish-detail-info-add-button-container'>
+                    <div className='dish-detail-info-container'>
                     <div className='dish-detail-info-button-container'>
                     <div className='dish-detail-info-container'>
                         <div className='dish-detail-info-name'>
-                            <h1>{dish.name}</h1>
+                            {dish.name}
+                        </div>
+                        <div className='dish-detail-info-price'>
+                        {'$' + dish.price}
                             </div>
+                        <div className='dish-detail-info-calories'>
                             {dish.calorie ?  dish.calorie+' Cal' : 'No calorie information'}
-                            {'$' + dish.price}
+                            
+                            </div>
 
-                </div>
-                </div>
-                {sessionUser&&<>
+                    </div>
+                    </div>
+                {sessionUser&&<div className='dish-detail-selector-add-item-button'>
                     <div className='dish-detail-quantity-selector-container'>
-                <select className='shopping-cart-detail-select-field' 
+                    <i class="fa-solid fa-angle-down"></i>
+                <select className='dish-detail-shopping-cart-detail-select-field' 
        value={quantity} 
        onChange={(e)=>setQuantity(e.target.value)} 
        >
@@ -100,7 +111,9 @@ function DishDetail(){
        </select>
                     </div>
                 <button className='dish-detail-add-to-cart-button' onClick={handleAddToCartClick}>Add {quantity} to Order  •  {dish.price}</button>
-                </>}
+                </div>}
+                </div>
+                </div>
                 {
                     !sessionUser&&<div className='dish-detail-login-to-order-container'>
                         <OpenModalButton
@@ -113,8 +126,8 @@ function DishDetail(){
                 
 
                 
+               
                 </div>
-                
                 
         </div>
     )
