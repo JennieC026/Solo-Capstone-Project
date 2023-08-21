@@ -36,6 +36,12 @@ function Navigation({ isLoaded }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
+  const handleSearchEnter = (e)=>{
+    if(e.key === 'Enter'){
+      alert('search feature coming soon!');
+    }
+  }
+
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
   let checkIfOnlyOneCart;
@@ -49,20 +55,21 @@ function Navigation({ isLoaded }) {
         let cartIndexButton;
         if(checkIfOnlyOneCart){
           cartIndexButton = (
-            <div>
+            <div className="navigation-shopping-cart-button-container">
               < OpenRightSideModalButton 
-          buttonText={<i class="fa-solid fa-cart-shopping"></i>}
+          buttonText={<><i class="fa-solid fa-cart-shopping"></i><p>{shoppingCartsArr?.length}{shoppingCartsArr?.length===1?'cart':'carts'}</p></>}
            modalComponent={<ShoppingCartDetail shoppingCart={shoppingCartsArr[0]}/>}
         />
               </div>
           )
         }else{
           cartIndexButton = (
-            <div>
-              <button onClick={openMenu}>
+            <div >
+              <button className="navigation-shopping-cart-button-container-multiple"  onClick={openMenu}>
         <i className="fas fa-shopping-cart" />
+        <p>{shoppingCartsArr?.length}{shoppingCartsArr?.length===1?'cart':'carts'}</p>
       </button>
-      <div className={ulClassName} ref={ulRef}>
+      <div className={ulClassName} ref={ulRef} >
         <ShoppingCartsIndex />
         </div>
               </div>
@@ -72,11 +79,36 @@ function Navigation({ isLoaded }) {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <div>
+      <div className="navigation-bar-container">
+        <div className="left-side-modal-button-container">
+          <div className="left-side-profile-button-container">
         < OpenLeftSideModalButton 
           buttonText={<i class="fa-solid fa-bars"></i>}
            modalComponent={<UserProfileModal />}
         />
+        </div>
+        
+        <div className="nav-icon-github-link-container">
+        <NavLink exact to="/stores">
+          <img src="https://cdn.discordapp.com/attachments/811082976501825539/1142352525379510372/logo_copy.png" alt="logo" className="amber-eats-logo"/>
+        </NavLink>
+        <a className="github-link-a-nav" href="https://github.com/JennieC026">
+        <div className="github-link-nav">
+          <i  className="fa-brands fa-github"></i>
+          <div>Jennie Chen</div>
+        </div>
+      </a>
+      </div>
+      
+          </div>
+          <div className='navigation-search-bar-container'>
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type='text' placeholder='Food, groceries, drinks, etc' className='navigation-search-bar' onKeyDown={handleSearchEnter}/>
+
+          </div>
+        
+      <div>
+        
         <div>
         {/* <ProfileButton user={sessionUser} /> */}
       </div>
@@ -86,12 +118,37 @@ function Navigation({ isLoaded }) {
       </div>
 
       </div>
+      </div>
+      
       
       
     );
   } else {
     sessionLinks = (
-      <div>
+      <div className="navigation-bar-container">
+        
+        <div className="left-side-modal-button-container">
+          <div className="left-side-profile-button-container">
+        < OpenLeftSideModalButton 
+          buttonText={<i class="fa-solid fa-bars"></i>}
+           modalComponent={<UserProfileModal />}
+        />
+        </div>
+        
+      <div className="nav-icon-github-link-container">
+        <NavLink exact to="/stores">
+          <img src="https://cdn.discordapp.com/attachments/811082976501825539/1142352525379510372/logo_copy.png" alt="logo" className="amber-eats-logo"/>
+        </NavLink>
+        <a className="github-link-a-nav" href="https://github.com/JennieC026">
+        <div className="github-link-nav">
+          <i  className="fa-brands fa-github"></i>
+          <div>Jennie Chen</div>
+        </div>
+      </a>
+      </div>
+      
+          </div>
+      <div className="navigation-login-signIn-button">
         <OpenModalButton
           buttonText="Log In"
           modalComponent={<LoginFormModal />}
@@ -101,18 +158,15 @@ function Navigation({ isLoaded }) {
           modalComponent={<SignupFormModal />}
         />
       </div>
+      </div>
     );
   }
 
   return (
-    <div>
-      <div>
-        <NavLink exact to="/stores">
-          Home
-        </NavLink>
-      </div>
-      {isLoaded && sessionLinks}
-    </div>
+    <>
+    {isLoaded && sessionLinks}
+    </>
+    
   );
 }
 

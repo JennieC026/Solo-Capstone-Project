@@ -1,0 +1,87 @@
+.amber-eats-logo-login{
+    height: 40px;
+    width: 160px;
+    margin-top: 20px;
+}
+
+.login-modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width:350px;
+    height: 500px;;
+}
+
+.login-modal-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.login-modal-form input{
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 10px;
+    background-color: rgb(226, 226, 226);
+
+}
+
+.login-modal-single-title{
+    font-size: 18px;
+    font-weight: 500;
+    font-family: sans-serif;
+    line-height: 25px;
+}
+
+.login-modal-form input:focus{
+    outline: none;
+    border: none;
+}
+
+.login-submit{
+    text-decoration: none;
+    color: inherit;
+    width: 300px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.login-demo-user{
+    text-decoration: none;
+    color: inherit;
+    width: 300px;
+    height: 50px;
+    background-color:rgb(233, 192, 104);
+    color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin-top: 10px;
+    border: none;
+    margin-bottom: 15px;
+}
+
+.login-error{
+    color: red;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 5px 35px ;
+}

@@ -1,3 +1,150 @@
-.hidden {
+  .hidden {
     display: none;
+  }
+
+  .navigation-bar-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    height: 60px;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .amber-eats-logo{
+    height: 40px;
+    width: 160px;
+    margin-left: 20px;
+
+  }
+
+  .left-side-modal-button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 40px;
+    margin-top: 10px;
+  }
+
+  .left-side-profile-button-container button{
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 20px;
+  height: 10px;
+  width: 20px;
+  cursor: pointer;
+    
+  }
+
+  .navigation-shopping-cart-button-container button{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 20px;
+  margin: 4px 30px;
+  cursor: pointer;
+  border-radius: 22px;
+  background: black;
+  color: #ffffff;
+  font-size: 17px;
+  height: 45px;
+  width: 100px;
+  margin-top: 10px;
+  }
+
+  .navigation-search-bar-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 40px;
+  }
+
+  .navigation-search-bar-container i{
+    position: relative;
+    cursor: pointer;
+    left: 32px;
+    font-size: 12px;
+    top: 5px;
+  }
+
+  .navigation-search-bar-container input{
+    border: none;
+    border-radius: 22px;
+    background-color: #e4e4e4;
+    padding-left: 35px;
+    margin: 4px 2px;
+    font-size: 17px;
+    height: 35px;
+    width: 400px;
+    margin-top: 10px;
+    
+  }
+
+  .navigation-search-bar-container input:focus{
+    outline: none;
+    border: none;
+    
+  }
+
+  .navigation-login-signIn-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 40px;
+    margin-top: 10px;
+  }
+
+  .navigation-login-signIn-button button{
+    border: none;
+    background: none;
+    padding: 0;
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+  .nav-icon-github-link-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 40px;
+    margin-top: 10px;
+  }
+
+  .nav-icon-github-link-container a{
+  
+    text-decoration: none;
+    color: inherit;
+    margin-left: 10px;
+    
+    
+
+  }
+
+  .github-link-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 20px;
+    height: 40px;
+  }
+
+  .github-link-nav div{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 2px;
+    margin-left: 5px;
+  }
+
+  .github-link-nav i{
+    margin-bottom: 7px;
   }

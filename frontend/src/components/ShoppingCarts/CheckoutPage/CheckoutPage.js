@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { fetchCreateComment } from '../../../store/comments';
 import { fetchAllStores } from '../../../store/stores';
 import { useHistory } from "react-router-dom";
+import './CheckoutPage.css'
+
 
 function CheckoutPage(){
     const { shoppingCartId } = useParams();
@@ -21,6 +23,8 @@ function CheckoutPage(){
     const [isSubmitting,setIsSubmitting] = useState(false);
 
     let existComment = store?.Comments?.find(comment => comment.userId === sessionUser.id);
+
+    let checkPastOrder = shoppingCart?.status === 'closed';
     
     useEffect(()=>{
         
@@ -65,7 +69,6 @@ function CheckoutPage(){
         setComment('');
         setStars(0);
         setIsSubmitting(false);
-        setErrors({});
     }
 
 
@@ -92,28 +95,37 @@ function CheckoutPage(){
         const disabled = comment.length > 200 ;
 
     return(
-        <div>
+        <div className='checkout-page-component'>
+            
             <div className="checkout-container">
+                <div className="checkout-info-container">
+                    <div className="checkout-info-logo-container">
+                    <img src="https://cdn.discordapp.com/attachments/811082976501825539/1142352525379510372/logo_copy.png" alt="logo" className="amber-eats-logo-checkout"/>
+                        </div>
             <div className="checkout-header-container">
-            <h1>Thanks for your Order,{sessionUser.firstName}</h1>
+            <div className='checkout-thank-message'>Thanks for ordering,{sessionUser.firstName}</div>
+            <div className='checkout-thank-message'>Enjoy your food!</div>
             </div>
             <div className="order-summary-container">
+                <div className='order-summary-header'>Order Summary</div>
+                <div className="order-summary-dishes-container">
                 {shoppingCart && shoppingCart?.ShoppingCartDishes?.map((shoppingCartDish) => (
                     <div className="order-summary-dish-container">
                         <div className="order-summary-dish-name">
-                            <h3>{shoppingCartDish?.Dish?.name}</h3>
+                            { shoppingCartDish?.Dish?.name?.length>20? shoppingCartDish?.Dish?.name?.slice(0,20):shoppingCartDish?.Dish?.name}
                             </div>
                             <div className="order-summary-dish-price">
-                                <h3>${shoppingCartDish?.Dish?.price}</h3>
+                                ${shoppingCartDish?.Dish?.price}
                             </div>
                             </div>))}
+                            </div>
                 </div>
                 <div className="order-total-container">
-                    <h3>Order Total: ${shoppingCart?.total}</h3>
+                    Order Total: ${shoppingCart?.total}
                     </div>
                     {showCommentBar && !existComment && <div className="order-comment-container">
                         <div className="order-comment-header">
-                        <h3>Leave a comment for {store?.name} (Optional)</h3>
+                        <div className='checkout-leave-comment'>Leave a comment for {store?.name} (Optional)</div>
                         </div>
                         <div className="order-comment-input-container">
                             <textarea className="order-comment-input" 
@@ -127,16 +139,18 @@ function CheckoutPage(){
                             {starRating}
                             {isSubmitting && errors.stars && <div className="comment-error-container">{errors.stars}</div>}
                             <div className="order-submit-comment-container">
-                                <button className="order-submit-comment-button" onClick={handleSubmitComment} disabled={disabled}>Submit Comment</button>
+                                <button className="order-submit-comment-button" onClick={handleSubmitComment} disabled={disabled}>Submit</button>
                                 <button className='order-clear-comment-button' onClick={handleClearClick}>Clear</button>
                                 </div>
                                 </div>}
                     {!showCommentBar && <div className="order-thanks-comment-container">
                         Thanks for the comment!
                         </div>}
-                        <button onClick={handleDoneClick}>Done</button>
+                        <div className="order-done-button-container">
+                        <button onClick={handleDoneClick} className='checkout-done-button'>Done</button>
+                        </div>
 
-
+                    </div>
                 </div>
             
         </div>

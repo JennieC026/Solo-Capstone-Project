@@ -8,3 +8,169 @@
     align-items: center;
     border: 1px solid rgb(212, 212, 212);
 }
+
+.user-profile-modal-container{
+    height: 100%;
+}
+
+.user-profile-user-profile-name-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.user-profile-user-name{
+    font-size: 15px;
+    font-weight: 500;
+    font-family: sans-serif;
+    line-height: 24px;
+    margin-left: 10px;
+}
+
+.user-profile-pass-order-icon-title-link{
+    text-decoration: none;
+    color: inherit;
+
+}
+
+.user-profile-pass-order-icon-title{
+    
+    display: flex;
+    direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.user-profile-pass-order-icon-title i{
+    width: 16px;
+}
+
+.user-profile-pass-order-icon-title div{
+    margin-left: 11px;
+    font-size: 17px;
+    font-weight: 500;
+    font-family: sans-serif;
+    line-height: 24px;
+}
+
+.user-profile-user-profile-menu{
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.user-profile-user-favorite{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 17px;
+}
+
+.user-profile-user-favorite i{
+    width: 16px;
+}
+
+.user-profile-user-favorite div{
+    margin-left: 10px;
+    font-size: 17px;
+    font-weight: 500;
+    font-family: sans-serif;
+    line-height: 24px;
+}
+
+.user-profile-logout-button{
+    margin-top: 25px;
+    height: 40px;
+    padding:0px;
+    border:none;
+    text-decoration: none;
+    color: rgb(138, 138, 138);
+    background: none;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.user-profile-modal-login-signup-button-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.user-profile-modal-login-signup-github-button{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%
+}
+
+.user-profile-modal-login-signup-github-button button:first-child{
+    text-decoration: none;
+    color: inherit;
+    width: 300px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin-top: 10px;
+
+}
+
+.user-profile-modal-login-signup-github-button button:nth-child(2){
+    text-decoration: none;
+    color: inherit;
+    width: 300px;
+    height: 50px;
+    background-color: rgb(185, 185, 185);
+    border: none;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin-top: 10px;
+
+}
+
+.github-link-a{
+    text-decoration: none;
+    color: inherit;
+    width: 300px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 30px;
+
+
+}
+
+.github-link{
+    display: flex;
+    flex-direction: row;
+}
+.github-link i{
+     margin-right: 10px;
+     font-size: 15px;
+ }
+
+.github-link div{
+   font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}

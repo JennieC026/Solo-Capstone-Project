@@ -29,7 +29,7 @@ function LoginFormModal({ handleSwitchModal}) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(email)) {
-      errorObj.invalidEmail = "Please enter a valid email address";
+      errorObj.invalidEmail = "Please enter a valid email address like: user@email.com";
     }
 
     if (!password) errorObj.password = "Password is required";
@@ -46,8 +46,12 @@ function LoginFormModal({ handleSwitchModal}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors({});
+    
     setIsSubmitting(true);
+    if(Object.keys(errors).length){
+      return;
+    }
+  
     return dispatch(sessionActions.login({ credential:email, password }))
       .then(()=>{
         closeModal();
@@ -65,21 +69,20 @@ function LoginFormModal({ handleSwitchModal}) {
 
   const handleDemoUserSubmit = async (e) => {
     e.preventDefault();
-    setErrors({});
     setIsSubmitting(true);
     await dispatch(sessionActions.login({ credential:'demo@user.io', password:'password' }));
     closeModal();
-    setErrors({});
     history.push('/');
   };
-   const disabled = password.length < 6 || email.length < 4
+
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="login-modal">
+     <img src="https://cdn.discordapp.com/attachments/811082976501825539/1142352525379510372/logo_copy.png" alt="logo" className="amber-eats-logo-login"/>
+      <form onSubmit={handleSubmit} className="login-modal-form">
         <label>
-          Email
+          <div className="login-modal-single-title">Email</div>
+          
           <input
             type="text"
             value={email}
@@ -87,9 +90,6 @@ function LoginFormModal({ handleSwitchModal}) {
             required
           />
         </label>
-        {email.length < 4 && email.length > 0 && (
-          <p className="login-error">Please input a valid email</p>
-        )}
         {isSubmitting && errors.email && (
           <p className="login-error">{errors.email}</p>
         )}
@@ -97,7 +97,7 @@ function LoginFormModal({ handleSwitchModal}) {
           <p className="login-error">{errors.invalidEmail}</p>
         )}
         <label>
-          Password
+        <div className="login-modal-single-title">Password</div>
           <input
             type="password"
             value={password}
@@ -105,16 +105,13 @@ function LoginFormModal({ handleSwitchModal}) {
             required
           />
         </label>
-        {password.length < 6 && password.length > 0 && (
-          <p className="login-error">Password must be at least 6 characters.</p>
-        )}
         {errors.credential && (
-          <p>{errors.credential}</p>
+          <p className="login-error">{errors.credential}</p>
         )}
-        <button type="submit" disabled={disabled}>Log In</button>
+        <button type="submit" className="login-submit">Log In</button>
       </form>
-      <button type="button" onClick={handleDemoUserSubmit}>Demo User</button>
-    </>
+      <button type="button" onClick={handleDemoUserSubmit} className="login-demo-user">Demo User</button>
+    </div>
   );
 }
 

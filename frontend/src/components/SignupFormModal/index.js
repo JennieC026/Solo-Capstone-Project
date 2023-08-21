@@ -2,10 +2,12 @@ import React, { useEffect,useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import * as sessionActions from "../../store/session";
+import { useHistory } from "react-router-dom";
 import "./SignupForm.css";
 
 function SignupFormModal() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -30,6 +32,8 @@ function SignupFormModal() {
     }
 
     if (!username) errorObj.username = "Username is required";
+     
+    if(username.length<4) errorObj.inValidUsername = "Username must be at least 4 characters";
 
     if(username.length>25) errorObj.inValidUsername = "Username must be less than 50 characters";
     
@@ -53,10 +57,12 @@ function SignupFormModal() {
 
     if(!phoneNumber) errorObj.phoneNumber = "Phone Number is required";
 
-    if(phoneNumber.length>11) errorObj.invalidPhoneNumber = "Phone Number must be between or equal to 10 and 11 characters";
+    if(phoneNumber.length>11||phoneNumber.length<10) errorObj.invalidPhoneNumber = "Phone Number must be between or equal to 10 and 11 characters";
 
     setErrors(errorObj);
   }, [email,username,firstName,lastName,password,phoneNumber]);
+
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -64,7 +70,6 @@ function SignupFormModal() {
     if (password === confirmPassword) {
       if(Object.keys(errors).length>0) return;
       setErrors({});
-      console.log('phone',phoneNumber)
       return dispatch(
         sessionActions.signup({
           email,
@@ -88,14 +93,23 @@ function SignupFormModal() {
     });
   };
 
-  const disabled = password.length < 6 || email.length < 4 || username.length < 4 || firstName.length < 2 || lastName.length < 2 || phoneNumber.length < 8 || password !== confirmPassword;
+  const disabled =  password !== confirmPassword;
+
+
+  const handleDemoUserSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    await dispatch(sessionActions.login({ credential:'demo@user.io', password:'password' }));
+    closeModal();
+    history.push('/');
+  };
 
   return (
-    <>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="sign-up-modal">
+       <img src="https://cdn.discordapp.com/attachments/811082976501825539/1142352525379510372/logo_copy.png" alt="logo" className="amber-eats-logo-login"/>
+      <form onSubmit={handleSubmit} className="signup-modal-form">
         <label>
-          Email
+        <div className="signup-modal-single-title">Email</div>
           <input
             type="text"
             value={email}
@@ -103,16 +117,13 @@ function SignupFormModal() {
             required
           />
         </label>
-        {email.length < 4 && email.length > 0 && (
-          <p className="login-error">Please input a valid email</p>
-        )}
         {isSubmitting && errors.email && errors.email==='email must be unique' && <p className="login-error">Email address is already in use</p>}
         {isSubmitting && errors.email && errors.email!=='email must be unique'  && <p className="login-error">{errors.email}</p>}
         {isSubmitting && errors.invalidEmail && (
           <p className="login-error">{errors.invalidEmail}</p>
         )}
         <label>
-          Username
+        <div className="signup-modal-single-title">Username</div>
           <input
             type="text"
             value={username}
@@ -120,16 +131,13 @@ function SignupFormModal() {
             required
           />
         </label>
-        {username.length < 4 && username.length > 0 && (
-          <p className="login-error">Please input a valid username</p>
-        )}
         {isSubmitting && errors.username &&errors.username ==='username must be unique'&& <p className="login-error">Username is already in use</p> }
         {isSubmitting && errors.username &&errors.username !=='username must be unique'&& <p className="login-error">{errors.username}</p> }
         {isSubmitting && errors.inValidUsername && (
           <p className="login-error">{errors.inValidUsername}</p>
         )}
         <label>
-          First Name
+        <div className="signup-modal-single-title">First Name</div>
           <input
             type="text"
             value={firstName}
@@ -137,15 +145,13 @@ function SignupFormModal() {
             required
           />
         </label>
-        {firstName.length < 2 && firstName.length > 0 && (
-          <p className="login-error">Please input a valid first name</p>
-        )}
+       
         {isSubmitting && errors.firstName && <p className="login-error">{errors.firstName}</p>}
         {isSubmitting && errors.invalidFirstName && (
           <p className="login-error">{errors.invalidFirstName}</p>
         )}
         <label>
-          Last Name
+        <div className="signup-modal-single-title">Last Name</div>
           <input
             type="text"
             value={lastName}
@@ -153,15 +159,12 @@ function SignupFormModal() {
             required
           />
         </label>
-        {lastName.length < 2 && lastName.length > 0 && (
-          <p className="login-error">Please input a valid last name</p>
-        )}
         {isSubmitting && errors.lastName && <p className="login-error">{errors.lastName}</p>}
         {isSubmitting && errors.invalidLastName && (
           <p className="login-error">{errors.invalidLastName}</p>
         )}
         <label>
-          Phone Number
+        <div className="signup-modal-single-title">Phone Number</div>
           <input
             type="text"
             value={phoneNumber}
@@ -169,18 +172,15 @@ function SignupFormModal() {
             required
           />
         </label>
-        {phoneNumber.length < 10 && phoneNumber.length > 0 && (
-          <p className="login-error">Phone Number must be between or equal to 10 and 11 characters</p>
-        )}
         {isNaN(phoneNumber) && (
-          <p className="login-error">Please input a valid phone number</p>
+          <p className="login-error">Phone number can't have characters</p>
         )}
         {isSubmitting && errors.phoneNumber && <p className="login-error">{errors.phoneNumber}</p>}
         {isSubmitting && errors.invalidPhoneNumber && (
           <p className="login-error">{errors.invalidPhoneNumber}</p>
         )}
         <label>
-          Password
+        <div className="signup-modal-single-title">Password</div>
           <input
             type="password"
             value={password}
@@ -188,15 +188,13 @@ function SignupFormModal() {
             required
           />
         </label>
-        {password.length < 6 && password.length > 0 && (
-          <p className="login-error">Please input a valid password</p>
-        )}
+        
         {isSubmitting && errors.password && <p className="login-error">{errors.password}</p>}
         {isSubmitting && errors.invalidPassword && (
           <p className="login-error">{errors.invalidPassword}</p>
         )}
         <label>
-          Confirm Password
+        <div className="signup-modal-single-title">Confirm Password</div>
           <input
             type="password"
             value={confirmPassword}
@@ -204,12 +202,16 @@ function SignupFormModal() {
             required
           />
         </label>
+        {password !== confirmPassword && (
+          <p className="login-error">Confirm Password must be the same as the Password</p>
+        )}
         {errors.confirmPassword && (
           <p className="login-error">{errors.confirmPassword}</p>
         )}
-        <button type="submit" disabled={disabled}>Sign Up</button>
+        <button type="submit" disabled={disabled} className="signup-submit">Sign Up</button>
       </form>
-    </>
+      <button type="button" onClick={handleDemoUserSubmit} className="login-demo-user">Demo User</button>
+    </div>
   );
 }
 

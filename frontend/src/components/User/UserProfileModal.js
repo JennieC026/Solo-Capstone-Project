@@ -22,6 +22,11 @@ function UserProfileModal(){
 
     };
 
+    const handlePastOrderClick = (e) => {
+        e.preventDefault();
+        alert('Past Order feature coming soon!');
+    }
+
     const logout = (e) => {
         e.preventDefault();
         dispatch(sessionActions.logout());
@@ -43,24 +48,39 @@ function UserProfileModal(){
                     {sessionUser?.username}
                     </div>
                     </div>
+                    <div className='user-profile-user-profile-menu'>
                     <div className='user-profile-user-pass-order'>
-                        <NavLink to='shoppingCarts/past'>Orders</NavLink>
+                        
+                            <div className='user-profile-pass-order-icon-title' onClick={handlePastOrderClick}>
+                                <i class="fa-solid fa-clipboard-list"></i>
+                                <div>Orders</div></div>
                         </div>
-                        <div className='user-profile-user-favorite'>Favorite</div>
-                        <button onClick={logout}>Log Out</button>
+                        <div className='user-profile-user-favorite'><i class="fa-solid fa-heart"></i>
+                        <div>Favorites</div></div>
+                        <button className='user-profile-logout-button' onClick={logout}>Log Out</button>
+                        </div>
     
                 </div>
             }
             {
-                !sessionUser && <div>
+                !sessionUser && <div className='user-profile-modal-login-signup-github-button'>
+                                        <div className='user-profile-modal-login-signup-button-container'>
+                                        <OpenModalButton
+          buttonText="Sign Up"
+          modalComponent={<SignupFormModal />}
+        />
                      <OpenModalButton
           buttonText="Log In"
           modalComponent={<LoginFormModal handleSwitchModal={handleSwitchModal}/>}
         />
-        <OpenModalButton
-          buttonText="Sign Up"
-          modalComponent={<SignupFormModal />}
-        />
+        
+                                        </div>
+        <a className="github-link-a" href="https://github.com/JennieC026">
+        <div className="github-link">
+          <i  className="fa-brands fa-github"></i>
+          <div>Jennie Chen</div>
+        </div>
+      </a>
                 </div>
             }
             </div>

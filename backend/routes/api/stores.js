@@ -46,6 +46,7 @@ router.get('/', async (req, res) => {
             totalStars += comment.starRating;
         }
         storeObj.avgStarRating = storeObj.Comments.length > 0 ? totalStars / storeObj.Comments.length : 0;
+        storeObj.avgStarRating = storeObj.avgStarRating.toFixed(1);
         storeObj.category = findBiggestCategory(storeObj.StoreCategory);
         delete storeObj.StoreCategory;
         return storeObj
@@ -82,6 +83,7 @@ router.get('/:storeId', async (req, res) => {
         totalStars += comment.starRating;
     }
     modifiedStore.avgStarRating = modifiedStore.Comments.length > 0 ? totalStars / modifiedStore.Comments.length : 0;
+    modifiedStore.avgStarRating = modifiedStore.avgStarRating.toFixed(1);
     modifiedStore.category = findBiggestCategory(modifiedStore.StoreCategory);
     delete storeObj.StoreCategory;
     res.json(modifiedStore);

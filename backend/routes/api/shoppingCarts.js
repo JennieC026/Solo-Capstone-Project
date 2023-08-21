@@ -36,7 +36,15 @@ router.put('/:shoppingCartId/checkout', async (req, res) => {
     }
     targetShoppingCart.status = 'closed';
     await targetShoppingCart.save();
-    return res.json(targetShoppingCart);
+    const modifiedShoppingCart = targetShoppingCart.toJSON();
+    modifiedShoppingCart.total = 0;
+    modifiedShoppingCart.dishAmount = 0;
+    for(let shoppingCartDish of modifiedShoppingCart.ShoppingCartDishes){
+        modifiedShoppingCart.total += shoppingCartDish.Dish.price * shoppingCartDish.quantity;
+        modifiedShoppingCart.dishAmount += shoppingCartDish.quantity;
+    }
+    modifiedShoppingCart.total = (modifiedShoppingCart.total).toFixed(2)
+    return res.json(modifiedShoppingCart);
 });
 
 //get all orders
@@ -123,6 +131,7 @@ router.put('/:shoppingCartId/shoppingCartDish/:shoppingCartDishId', async (req, 
             modifiedShoppingCart.total += shoppingCartDish.Dish.price * shoppingCartDish.quantity;
             modifiedShoppingCart.dishAmount += shoppingCartDish.quantity;
         }
+        modifiedShoppingCart.total = (modifiedShoppingCart.total).toFixed(2)
         return res.json(modifiedShoppingCart);
 });
 
@@ -201,6 +210,7 @@ router.post('/:shoppingCartId/shoppingCartDish/:dishId', async (req, res) => {
         modifiedShoppingCart.total += shoppingCartDish.Dish.price * shoppingCartDish.quantity;
         modifiedShoppingCart.dishAmount += shoppingCartDish.quantity;
     }
+    modifiedShoppingCart.total = (modifiedShoppingCart.total).toFixed(2)
 
         return res.json(modifiedShoppingCart);
     }
@@ -244,7 +254,7 @@ for(let shoppingCartDish of newShoppingCart.ShoppingCartDishes){
     modifiedShoppingCart.total += shoppingCartDish.Dish.price * shoppingCartDish.quantity;
     modifiedShoppingCart.dishAmount += shoppingCartDish.quantity;
 }
-
+modifiedShoppingCart.total = (modifiedShoppingCart.total).toFixed(2)
     return res.json(modifiedShoppingCart);
 
 });
@@ -322,6 +332,7 @@ router.delete('/:shoppingCartId/shoppingCartDish/:shoppingCartDishId', async (re
         modifiedShoppingCart.total += shoppingCartDish.Dish.price * shoppingCartDish.quantity;
         modifiedShoppingCart.dishAmount += shoppingCartDish.quantity;
     }
+    modifiedShoppingCart.total = (modifiedShoppingCart.total).toFixed(2)
     
             return res.json(modifiedShoppingCart);
 
