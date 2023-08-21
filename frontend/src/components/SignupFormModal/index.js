@@ -98,7 +98,6 @@ function SignupFormModal() {
 
   const handleDemoUserSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     await dispatch(sessionActions.login({ credential:'demo@user.io', password:'password' }));
     closeModal();
     history.push('/');
@@ -210,7 +209,7 @@ function SignupFormModal() {
         )}
         <button type="submit" disabled={disabled} className="signup-submit">Sign Up</button>
       </form>
-      <button type="button" onClick={handleDemoUserSubmit} className="login-demo-user">Demo User</button>
+      <button type="button" onClick={handleDemoUserSubmit} className="login-demo-user">Log in as Demo User</button>
     </div>
   );
 }

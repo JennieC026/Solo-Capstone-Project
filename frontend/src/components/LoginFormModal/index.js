@@ -69,7 +69,7 @@ function LoginFormModal({ handleSwitchModal}) {
 
   const handleDemoUserSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setErrors({});
     await dispatch(sessionActions.login({ credential:'demo@user.io', password:'password' }));
     closeModal();
     history.push('/');
@@ -110,7 +110,7 @@ function LoginFormModal({ handleSwitchModal}) {
         )}
         <button type="submit" className="login-submit">Log In</button>
       </form>
-      <button type="button" onClick={handleDemoUserSubmit} className="login-demo-user">Demo User</button>
+      <button type="button" onClick={handleDemoUserSubmit} className="login-demo-user">Log in as Demo User</button>
     </div>
   );
 }
