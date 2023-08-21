@@ -32,11 +32,13 @@ function  DeleteCommentModal({commentId}){
 
        return (
         <div className="delete-m">
-            <h1>Confirm Delete</h1>
-            <p>Are you sure you want to delete this review?
+            <div className="delete-confirm">Confirm Delete</div>
+            <p>Are you sure you want to delete this comment?
     </p>
-             <button id="delete-button-yes"onClick={()=>handleDeleteClick(commentId)}>{'Yes (Delete Review)'}</button>
-             <button id='delete-button-no' onClick={handleCancelDeleteClick}>{'No (Keep Review)'}</button>
+    <div className="delete-comment-button-container">
+             <button id="delete-button-yes"onClick={()=>handleDeleteClick(commentId)}>{'Yes'}</button>
+             <button id='delete-button-no' onClick={handleCancelDeleteClick}>{'No'}</button>
+             </div>
            </div>
           
       );
