@@ -22,6 +22,11 @@ function UserProfileModal(){
 
     };
 
+    const handlePastOrderClick = (e) => {
+        e.preventDefault();
+        alert('Past Order feature coming soon!');
+    }
+
     const logout = (e) => {
         e.preventDefault();
         dispatch(sessionActions.logout());
@@ -45,10 +50,10 @@ function UserProfileModal(){
                     </div>
                     <div className='user-profile-user-profile-menu'>
                     <div className='user-profile-user-pass-order'>
-                        <NavLink to='shoppingCarts/past' className='user-profile-pass-order-icon-title-link'>
-                            <div className='user-profile-pass-order-icon-title'>
+                        
+                            <div className='user-profile-pass-order-icon-title' onClick={handlePastOrderClick}>
                                 <i class="fa-solid fa-clipboard-list"></i>
-                                <div>Orders</div></div></NavLink>
+                                <div>Orders</div></div>
                         </div>
                         <div className='user-profile-user-favorite'><i class="fa-solid fa-heart"></i>
                         <div>Favorites</div></div>
@@ -58,15 +63,24 @@ function UserProfileModal(){
                 </div>
             }
             {
-                !sessionUser && <div>
+                !sessionUser && <div className='user-profile-modal-login-signup-github-button'>
+                                        <div className='user-profile-modal-login-signup-button-container'>
+                                        <OpenModalButton
+          buttonText="Sign Up"
+          modalComponent={<SignupFormModal />}
+        />
                      <OpenModalButton
           buttonText="Log In"
           modalComponent={<LoginFormModal handleSwitchModal={handleSwitchModal}/>}
         />
-        <OpenModalButton
-          buttonText="Sign Up"
-          modalComponent={<SignupFormModal />}
-        />
+        
+                                        </div>
+        <a className="github-link-a" href="https://github.com/JennieC026">
+        <div className="github-link">
+          <i  className="fa-brands fa-github"></i>
+          <div>Jennie Chen</div>
+        </div>
+      </a>
                 </div>
             }
             </div>

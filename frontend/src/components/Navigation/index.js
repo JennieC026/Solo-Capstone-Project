@@ -64,11 +64,12 @@ function Navigation({ isLoaded }) {
           )
         }else{
           cartIndexButton = (
-            <div>
-              <button onClick={openMenu}>
+            <div >
+              <button className="navigation-shopping-cart-button-container-multiple"  onClick={openMenu}>
         <i className="fas fa-shopping-cart" />
+        <p>{shoppingCartsArr?.length}{shoppingCartsArr?.length===1?'cart':'carts'}</p>
       </button>
-      <div className={ulClassName} ref={ulRef}>
+      <div className={ulClassName} ref={ulRef} >
         <ShoppingCartsIndex />
         </div>
               </div>
@@ -87,10 +88,16 @@ function Navigation({ isLoaded }) {
         />
         </div>
         
-      <div>
+        <div className="nav-icon-github-link-container">
         <NavLink exact to="/stores">
           <img src="https://cdn.discordapp.com/attachments/811082976501825539/1142352525379510372/logo_copy.png" alt="logo" className="amber-eats-logo"/>
         </NavLink>
+        <a className="github-link-a-nav" href="https://github.com/JennieC026">
+        <div className="github-link-nav">
+          <i  className="fa-brands fa-github"></i>
+          <div>Jennie Chen</div>
+        </div>
+      </a>
       </div>
       
           </div>
@@ -119,12 +126,29 @@ function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <div className="navigation-bar-container">
-      <div>
+        
+        <div className="left-side-modal-button-container">
+          <div className="left-side-profile-button-container">
+        < OpenLeftSideModalButton 
+          buttonText={<i class="fa-solid fa-bars"></i>}
+           modalComponent={<UserProfileModal />}
+        />
+        </div>
+        
+      <div className="nav-icon-github-link-container">
         <NavLink exact to="/stores">
           <img src="https://cdn.discordapp.com/attachments/811082976501825539/1142352525379510372/logo_copy.png" alt="logo" className="amber-eats-logo"/>
         </NavLink>
+        <a className="github-link-a-nav" href="https://github.com/JennieC026">
+        <div className="github-link-nav">
+          <i  className="fa-brands fa-github"></i>
+          <div>Jennie Chen</div>
+        </div>
+      </a>
       </div>
-      <div>
+      
+          </div>
+      <div className="navigation-login-signIn-button">
         <OpenModalButton
           buttonText="Log In"
           modalComponent={<LoginFormModal />}

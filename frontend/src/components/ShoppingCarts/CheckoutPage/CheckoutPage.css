@@ -1,0 +1,175 @@
+.checkout-page-component{
+    background-color: rgb(233, 192, 104);
+    width: 100vw;
+    height: 100vw;
+    display: flex;
+}
+
+.checkout-container{
+    background-color: white;
+    width: 40%;
+    height: 650px;
+    
+    margin-left: 30px;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+.checkout-info-container{
+    margin: 20px 20px;
+}
+
+.order-summary-dish-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+.checkout-thank-message{
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.amber-eats-logo-checkout{
+    height: 40px;
+    width: 160px;
+   
+
+  }
+
+  .order-summary-header{
+    font-size: 20px;
+
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .order-summary-dishes-container{
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .order-summary-dish-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    margin-top:5px;
+    height: 40px;
+  }
+
+  .checkout-leave-comment{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .order-summary-dish-name{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .order-summary-dish-price{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .order-total-container{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+  }
+
+  .checkout-done-button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 20px;
+    margin: 4px 30px;
+    cursor: pointer;
+    border-radius: 22px;
+    background: black;
+    color: #ffffff;
+    font-size: 17px;
+    height: 45px;
+    width: 90px;
+    margin-top: 10px;
+  }
+
+  .order-done-button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .order-comment-input{
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding: 10px;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  #star-button{
+    background-color: transparent;
+    border: none;
+    outline:none;
+    cursor:pointer;
+  }
+  
+  .order-submit-comment-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 300px;
+  }
+
+  .order-submit-comment-button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 20px;
+    margin: 4px 5px;
+    cursor: pointer;
+    border-radius: 22px;
+    background: black;
+    color: #ffffff;
+    font-size: 17px;
+    height: 45px;
+    width: 90px;
+    margin-top: 10px;
+  }
+
+  .order-clear-comment-button{
+    background-color: transparent;
+    border: none;
+    color: gray;
+    text-decoration: underline;
+    
+  }
+
+  .comment-error-container{
+    color: red;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .order-thanks-comment-container{
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+  }

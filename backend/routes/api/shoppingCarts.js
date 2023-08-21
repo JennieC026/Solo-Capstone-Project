@@ -36,7 +36,15 @@ router.put('/:shoppingCartId/checkout', async (req, res) => {
     }
     targetShoppingCart.status = 'closed';
     await targetShoppingCart.save();
-    return res.json(targetShoppingCart);
+    const modifiedShoppingCart = targetShoppingCart.toJSON();
+    modifiedShoppingCart.total = 0;
+    modifiedShoppingCart.dishAmount = 0;
+    for(let shoppingCartDish of modifiedShoppingCart.ShoppingCartDishes){
+        modifiedShoppingCart.total += shoppingCartDish.Dish.price * shoppingCartDish.quantity;
+        modifiedShoppingCart.dishAmount += shoppingCartDish.quantity;
+    }
+    modifiedShoppingCart.total = (modifiedShoppingCart.total).toFixed(2)
+    return res.json(modifiedShoppingCart);
 });
 
 //get all orders

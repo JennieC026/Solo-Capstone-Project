@@ -88,9 +88,11 @@ function StoreComment({store}){
                             </div>
                             </div>
                             </div>
+                            <div className='store-detail-single-comment-content-container'>
                         <div className='store-detail-single-comment-content'>
                             {comment.content}
                         </div>
+                        <div className='comment-edit-delete-button'>
                         {sessionUser?.id === comment.User.id && (
                             <div className='store-detail-single-comment-edit-button' onClick={handleToggle}>
                                 Edit                  
@@ -102,6 +104,10 @@ function StoreComment({store}){
                           buttonText="Delete"
                           modalComponent={<DeleteCommentModal commentId={comment.id}/>}/>
                         }
+
+                        </div>
+                        
+                        </div>
                         
                         {showUpdateComment && sessionUser?.id === comment.User.id &&
                         <EditComment comment={comment} setShowUpdateCommentOrigin={setShowUpdateComment} />

@@ -60,23 +60,39 @@ function ShoppingCartsIndex(){
     return(
         <>
        
-        <div  ref={ulRef}>
+        <div  ref={ulRef} >
             {checkIfOnlyOneCart && <ShoppingCartDetail shoppingCart={shoppingCartsArr[0]}/>}
-            {!checkIfOnlyOneCart && shoppingCartsArr.map((shoppingCart)=>(
+            {!checkIfOnlyOneCart && <div className='store-index-multiple-cart-menu'>{shoppingCartsArr.map((shoppingCart)=>(
+                <div className='shopping-carts-index-single-cart-container'>
                 <OpenRightSideModalButton
                 buttonText={<div className='shopping-carts-index-single-cart-container'>
+                    <div className='shopping-carts-index-single-cart-store-container'>
+                    <div className='shopping-carts-index-single-cart-store-img-container'>
+                    <img className='shopping-carts-index-single-cart-store-img' src={stores[shoppingCart.storeId]?.coverUrl} alt='store'/>
+                    </div>
+                    <div className='shopping-carts-index-single-cart-store-name-total-container'>
                 <div className='shopping-carts-index-single-cart-store-name'>
-                    {stores[shoppingCart.storeId]?.name}
+                    {stores[shoppingCart.storeId]?.name?.length>29? stores[shoppingCart.storeId]?.name.slice(0,29) + '...' : stores[shoppingCart.storeId]?.name}
                     </div>
                     <div className='shopping-carts-index-single-cart-total'>
                         Subtotal: {shoppingCart.total}
                         </div>
                         
+                        </div>
+                        <div className='shopping-carts-index-single-cart-quantity'>
+                            {shoppingCart.dishAmount} 
+                            </div>
+                            <div className='shopping-carts-index-right-angle'>
+                            <i class="fa-solid fa-angle-right"></i>
+                                </div>
+                        </div>
                         </div>}
                 modalComponent={<ShoppingCartDetail shoppingCart={shoppingCart}/>}
               />
+              </div>
  
                 ))}
+                </div>}
 
         </div>
         </>

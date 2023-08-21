@@ -77,3 +77,35 @@
     line-height: 24px;
     
 }
+
+.store-detail-single-comment-content-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.comment-edit-delete-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.store-detail-single-comment-edit-button{
+    margin-right:10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    color: gray;
+    text-decoration: underline;
+}
+
+.comment-edit-delete-button button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 15px;
+    color: gray;
+    text-decoration: underline;
+}

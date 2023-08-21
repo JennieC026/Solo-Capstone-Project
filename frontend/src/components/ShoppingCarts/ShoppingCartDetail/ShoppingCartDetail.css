@@ -18,6 +18,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     margin: 20px;
+    z-index: 1000000;
 
 
 
@@ -70,6 +71,9 @@
     border-radius: 10%;
     border: 1px solid #ebebeb;
     box-shadow: 2px 2px 2px 0px rgba(90, 90, 90, 0.5);
+    height: 120px;
+    width: 200px;
+    background-color: #ffffff;
 }
 
 .shopping-cart-buttons-container{
@@ -77,14 +81,15 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    height:  40px;
-    width: 200px;
+   
+    height:  100%;
+    width: 100%;
+    
     
 }
 
 .shopping-cart-buttons-menu button{
-    background-color: white;
+    background-color: transparent;
     
     border: none;
     outline: none;
@@ -103,6 +108,8 @@
 
 .shopping-cart-buttons-menu-clear-carts{
     color: rgb(230, 47, 47);
+    height: 100%;
+    width: 100%;
 }
 
 .shopping-cart-buttons-menu-clear-carts div{
@@ -115,10 +122,11 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    height:  40px;
-    width: 200px;
+   
+    height:  100%;
+    width: 100%;
     border-top: 1px solid #bdbdbd;
+    
 }
 
 .shopping-cart-buttons-container-bottom i{

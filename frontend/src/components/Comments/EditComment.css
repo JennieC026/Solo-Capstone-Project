@@ -1,0 +1,31 @@
+.store-detail-edit-comment-form-content{
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding: 10px;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.store-detail-edit-comment-form-button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 20px;
+    margin: 4px 5px;
+    cursor: pointer;
+    border-radius: 22px;
+    background: black;
+    color: #ffffff;
+    font-size: 17px;
+    height: 45px;
+    width: 90px;
+    margin-top: 10px;
+}
+
+.store-detail-edit-comment-form-button:disabled{
+    background-color: gray
+}
