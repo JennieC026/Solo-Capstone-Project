@@ -17,7 +17,7 @@ function Navigation({ isLoaded }) {
   const ulRef = useRef();
   const sessionUser = useSelector((state) => state.session.user);
   const shoppingCarts = useSelector(state => state.shoppingCarts);
-  const shoppingCartsArr = Object.values(shoppingCarts).filter(shoppingCart => shoppingCart.status === 'open');
+  const [shoppingCartsArr,setShoppingCartsArr] = useState(Object.values(shoppingCarts).filter(shoppingCart => shoppingCart.status === 'open'));
   
   const openMenu = () => {
     if (showMenu) return;
@@ -36,6 +36,13 @@ function Navigation({ isLoaded }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
+  useEffect(() => {
+    if(shoppingCartsArr!==Object.values(shoppingCarts).filter(shoppingCart => shoppingCart.status === 'open')){
+      setShoppingCartsArr(Object.values(shoppingCarts).filter(shoppingCart => shoppingCart.status === 'open'));
+    }
+  }, [shoppingCarts]);
+
+
   const handleSearchEnter = (e)=>{
     if(e.key === 'Enter'){
       alert('search feature coming soon!');
@@ -45,6 +52,7 @@ function Navigation({ isLoaded }) {
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
   let checkIfOnlyOneCart;
+
 
         if(shoppingCartsArr.length === 1){
             checkIfOnlyOneCart = true;
@@ -156,6 +164,7 @@ function Navigation({ isLoaded }) {
         <OpenModalButton
           buttonText="Sign Up"
           modalComponent={<SignupFormModal />}
+          
         />
       </div>
       </div>

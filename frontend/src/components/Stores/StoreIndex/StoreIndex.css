@@ -149,6 +149,14 @@
     line-height: 24px;
 }
 
+.store-index-filter-store-sort-menu-alert{
+    font-size: 14px;
+    font-weight: 500;
+    font-family: sans-serif;
+    line-height: 24px;
+    color: red;
+}
+
 
 @media (max-width: 768px) {
     .store-index-filter-store-title {

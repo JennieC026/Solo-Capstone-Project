@@ -3,6 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useHistory } from "react-router-dom";
+import { fetchAllShoppingCarts } from "../../store/shoppingcarts";
 import "./LoginForm.css";
 
 function LoginFormModal({ handleSwitchModal}) {
@@ -55,6 +56,7 @@ function LoginFormModal({ handleSwitchModal}) {
     return dispatch(sessionActions.login({ credential:email, password }))
       .then(()=>{
         closeModal();
+        dispatch(fetchAllShoppingCarts())
         setErrors({});
         history.push('/');
       })
@@ -72,6 +74,7 @@ function LoginFormModal({ handleSwitchModal}) {
     setErrors({});
     await dispatch(sessionActions.login({ credential:'demo@user.io', password:'password' }));
     closeModal();
+    dispatch(fetchAllShoppingCarts())
     history.push('/');
   };
 
