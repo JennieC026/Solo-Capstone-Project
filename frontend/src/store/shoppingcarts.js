@@ -179,7 +179,7 @@ const initialState = {};
 const shoppingCartsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_ALL_SHOPPING_CARTS: {
-            const allShoppingCarts = {...state};
+            const allShoppingCarts = {};
             action.shoppingCarts.forEach(shoppingCart => {
                 allShoppingCarts[shoppingCart.id] = shoppingCart;
             });

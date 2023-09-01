@@ -10,6 +10,7 @@ function StoreIndex(){
     const stores = useSelector(state => Object.values(state.stores));
     const [showFilterMenu, setShowFilterMenu] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null);
+    const [newAlert, setNewAlert] = useState(false);
     
     
     useEffect(() => {
@@ -20,7 +21,8 @@ function StoreIndex(){
 
     const handleSelect = (option) => {
         setSelectedOption(option);
-        alert('This feature will be available soon!');
+        setNewAlert(true);
+        console.log(option)
 
     }
 
@@ -48,29 +50,31 @@ function StoreIndex(){
                             
                     </div>
                         {showFilterMenu && (
+                            
                             <div className='store-index-filter-store-sort-menu'>
-                                <div className='store-index-filter-store-sort-menu-option-container'>
+                                {alert&&<div className='store-index-filter-store-sort-menu-alert' >Sort Feature coming soon!</div>}
+                                <div className='store-index-filter-store-sort-menu-option-container' onClick={() => handleSelect('Picked for you')}>
                                     <i className = {selectedOption === 'Picked for you' ? 'fa-solid fa-circle-dot' : 'fa-regular fa-circle'}></i>
                                 <div onClick={() => handleSelect('Picked for you')} className='store-index-filter-store-sort-menu-option'>
                                     Picked for you
                                 </div>
                                 </div>
 
-                                <div className='store-index-filter-store-sort-menu-option-container'>
+                                <div className='store-index-filter-store-sort-menu-option-container' onClick={() => handleSelect('Most Popular')}>
                                     <i className = {selectedOption === 'Most Popular' ? 'fa-solid fa-circle-dot' : 'fa-regular fa-circle'}></i>
-                                <div onClick={() => handleSelect('Most Popular')} className='store-index-filter-store-sort-menu-option'>
+                                <div  className='store-index-filter-store-sort-menu-option'>
                                     Most Popular
                                 </div>
                                 </div>
 
-                                <div className='store-index-filter-store-sort-menu-option-container'>
+                                <div className='store-index-filter-store-sort-menu-option-container' onClick={() => handleSelect('Rating')}>
                                     <i className = {selectedOption === 'Rating' ? 'fa-solid fa-circle-dot' : 'fa-regular fa-circle'}></i>
                                 <div onClick={() => handleSelect('Rating')} className='store-index-filter-store-sort-menu-option'>
                                     Rating
                                 </div>
                                 </div>
 
-                                <div className='store-index-filter-store-sort-menu-option-container'>
+                                <div className='store-index-filter-store-sort-menu-option-container' onClick={() => handleSelect('Delivery Time')}>
                                     <i className = {selectedOption === 'Delivery Time' ? 'fa-solid fa-circle-dot' : 'fa-regular fa-circle'}></i>
                                 <div onClick={() => handleSelect('Delivery Time')} className='store-index-filter-store-sort-menu-option'>
                                     Delivery Time
