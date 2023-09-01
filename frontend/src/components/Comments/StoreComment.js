@@ -26,7 +26,7 @@ function StoreComment({store}){
 
             const calculateTimeAgo = (time) => {
                 const timeAgo = Date.now() - new Date(time);
-            
+
                 const seconds = Math.floor(timeAgo / 1000);
                 const minutes = Math.floor(seconds / 60);
                 const hours = Math.floor(minutes / 60);
@@ -34,7 +34,7 @@ function StoreComment({store}){
                 const weeks = Math.floor(days / 7);
                 const months = Math.floor(days / 30);
                 const years = Math.floor(days / 365);
-            
+
                 if (years > 0) {
                     return years + (years === 1 ? ' year ago' : ' years ago');
                 }
@@ -53,12 +53,15 @@ function StoreComment({store}){
                 if (minutes > 0) {
                     return minutes + (minutes === 1 ? ' minute ago' : ' minutes ago');
                 }
+                if(seconds <= 0) {
+                    return 'Just now'
+                }
                 return seconds + (seconds === 1 ? ' second ago' : ' seconds ago');
             };
-               
+
 
          return (
-            
+
                 <div className='store-detail-all-comments-container'>
                 <ol className='store-detail-comments-map-container'>
                     {comments.map((comment)=>(
@@ -75,16 +78,16 @@ function StoreComment({store}){
                             <div className='store-detail-single-comment-created-time'>
                             <div>
                             {calculateTimeAgo(comment.updatedAt)}
-                                 
+
                             </div>
                             </div>
                                 </div>
-                            
+
                             <div className='store-detail-single-comment-star-rating'>
                             {Array(comment.starRating).fill().map((_, index) => (
                                     <i key={index} className="fa-solid fa-star"></i>
                                 ))}
-                                
+
                             </div>
                             </div>
                             </div>
@@ -95,10 +98,10 @@ function StoreComment({store}){
                         <div className='comment-edit-delete-button'>
                         {sessionUser?.id === comment.User.id && (
                             <div className='store-detail-single-comment-edit-button' onClick={handleToggle}>
-                                Edit                  
+                                Edit
                             </div>
                         )}
-                        {sessionUser?.id === comment.User.id && 
+                        {sessionUser?.id === comment.User.id &&
                         <OpenModalButton
                         className='cursor-button'
                           buttonText="Delete"
@@ -106,14 +109,14 @@ function StoreComment({store}){
                         }
 
                         </div>
-                        
+
                         </div>
-                        
+
                         {showUpdateComment && sessionUser?.id === comment.User.id &&
                         <EditComment comment={comment} setShowUpdateCommentOrigin={setShowUpdateComment} />
                         }
 
-                            
+
 
 
                         </div>
@@ -121,8 +124,8 @@ function StoreComment({store}){
 
                 </ol>
              </div>
-                 
-             
+
+
          )
         }else{
             return(
@@ -132,7 +135,7 @@ function StoreComment({store}){
 
         }
 
-        
+
      }
 
 
