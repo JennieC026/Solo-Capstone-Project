@@ -6,29 +6,39 @@ if (process.env.NODE_ENV === 'production') {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('StoreCategories', {
+    await queryInterface.createTable('Promotions', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      parentCategoryId: {
+      name: {
+        type: Sequelize.STRING,
+        allowNull:false,
+      },
+      description: {
+        type: Sequelize.STRING
+      },
+      dishId: {
         type: Sequelize.INTEGER,
-        allowNull: true,
-        references: {
-          model: 'StoreCategories',
-          key: 'id'
+        allowNull:false,
+        references:{
+          model:'Dishes',
+          key:'id'
         }
       },
-      categoryName: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
+      discountRate: {
+        type: Sequelize.DECIMAL,
+        allowNull:false,
       },
-      categoryImageUrl:{
-        type: Sequelize.STRING,
-        allowNull: true,
+      startDate: {
+        type: Sequelize.DATE,
+        allowNull:false,
+      },
+      endDate: {
+        type: Sequelize.DATE,
+        allowNull:false,
       },
       createdAt: {
         allowNull: false,
@@ -40,11 +50,10 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue:Sequelize.literal('CURRENT_TIMESTAMP')
       }
-      
     },options);
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = "StoreCategories";
+    options.tableName = 'Promotions';
     await queryInterface.dropTable(options);
   }
 };

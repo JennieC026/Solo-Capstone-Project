@@ -1,0 +1,29 @@
+.not-found-page-component{
+    background-color: rgb(233, 192, 104);
+    width: 100vw;
+    height: 100vw;
+    display: flex;
+}
+
+.not-found-page-text{
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.not-found-page-image-text-container{
+    margin:100px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100vw;
+    
+}
+
+.not-found-page-image-container img{
+    width: 1000px;
+
+}

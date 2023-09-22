@@ -5,6 +5,7 @@ import storesReducer from "./stores";
 import dishesReducer from "./dishes";
 import commentsReducer from './comments';
 import shoppingCartsReducer from './shoppingcarts';
+import categoriesReducer from './categories';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
     dishes: dishesReducer,
     comments: commentsReducer,
     shoppingCarts: shoppingCartsReducer,
+    categories: categoriesReducer,
 });
 
 let enhancer;

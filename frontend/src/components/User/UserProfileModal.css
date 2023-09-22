@@ -54,6 +54,7 @@
     font-weight: 500;
     font-family: sans-serif;
     line-height: 24px;
+    cursor: pointer;
 }
 
 .user-profile-user-profile-menu{
@@ -67,6 +68,7 @@
     justify-content: flex-start;
     align-items: center;
     margin-top: 17px;
+    cursor: pointer;
 }
 
 .user-profile-user-favorite i{

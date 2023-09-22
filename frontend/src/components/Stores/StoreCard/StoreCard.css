@@ -1,0 +1,39 @@
+.store-index-card-fav-container{
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 25px;
+    left:40%;
+    width: 50px;
+    height:50px;
+    border-radius: 50%;
+    
+
+
+    
+}
+
+.store-index-card-fav-icon-background{
+    width: 30px;
+    height:30px;
+    border-radius: 50%;
+    
+    background: radial-gradient(circle at center, #8b8b8b, rgba(136, 136, 136, 0.5)20%, transparent 70%);
+    opacity: 50%;
+    position: relative;
+    left: 30%;
+    top: 7px;
+}
+
+.store-index-card-fav-container i{
+    position: relative;
+    top: 7px;
+    right: 20%;
+    color:rgb(255, 255, 255);
+    font-size: 20px;
+    
+    
+}
+

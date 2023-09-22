@@ -62,6 +62,10 @@ router.get('/', async (req, res) => {
                 model: ShoppingCartDish,
                 include: [Dish],
             },
+            {
+                model: Store,
+                
+            }
         ],
     });
     console.log('shoppingCarts',shoppingCarts)
