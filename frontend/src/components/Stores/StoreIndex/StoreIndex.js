@@ -14,9 +14,10 @@ function StoreIndex(){
     const stores = useSelector(state => Object.values(state.stores));
     const [showFilterMenu, setShowFilterMenu] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null);
+
     const [storeArray, setStoreArray] = useState(stores);
    
-    
+
     
     useEffect(() => {
         if(stores.length === 0){
@@ -34,6 +35,7 @@ function StoreIndex(){
 
     const handleSelect = (option) => {
         setSelectedOption(option);
+
         if(option === 'Picked for you'){
             setStoreArray(stores);
         }else if(option === 'Most Popular'){
@@ -46,6 +48,7 @@ function StoreIndex(){
             const sortedStores = stores.sort((a,b) => a.deliveryFee - b.deliveryFee);
             setStoreArray(sortedStores);
         }
+
 
     }
     
@@ -76,7 +79,9 @@ function StoreIndex(){
                             
                     </div>
                         {showFilterMenu && (
+                            
                             <div className='store-index-filter-store-sort-menu'>
+
                                 <div className='store-index-filter-store-sort-menu-option-container' onClick={() => handleSelect('Picked for you')}>
                                     <i className = {selectedOption === 'Picked for you' ? 'fa-solid fa-circle-dot' : 'fa-regular fa-circle'}></i>
                                 <div  className='store-index-filter-store-sort-menu-option'>
@@ -98,10 +103,12 @@ function StoreIndex(){
                                 </div>
                                 </div>
 
+
                                 <div className='store-index-filter-store-sort-menu-option-container' onClick={() => handleSelect('Delivery Fee')}>
                                     <i className = {selectedOption === 'Delivery Fee' ? 'fa-solid fa-circle-dot' : 'fa-regular fa-circle'}></i>
                                 <div  className='store-index-filter-store-sort-menu-option'>
                                     Least Delivery Fee
+
                                 </div>
                                 </div>
                             </div>)}

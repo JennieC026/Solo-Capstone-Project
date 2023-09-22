@@ -75,7 +75,7 @@ function UserProfileModal(){
                                         <div className='user-profile-modal-login-signup-button-container'>
                                         <OpenModalButton
           buttonText="Sign Up"
-          modalComponent={<SignupFormModal />}
+          modalComponent={<SignupFormModal handleSwitchModal={handleSwitchModal}/>}
         />
                      <OpenModalButton
           buttonText="Log In"
