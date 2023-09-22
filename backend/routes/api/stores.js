@@ -1,6 +1,6 @@
 const express = require('express');
 
-const {Store, Comment, User,StoreCategory,Dish} = require('../../db/models');
+const {Store, Comment, User,StoreCategory,Dish,Favorite,Promotion} = require('../../db/models');
 const Sequelize = require('sequelize');
 const {findBiggestCategory} = require('../../utils/categoryTools');
 
@@ -17,6 +17,9 @@ router.get('/:storeId/dishes', async (req, res) => {
             {
                 model: Store,
             },
+            {
+                model:Promotion,
+            }
         ],
     });
     return res.json(dishes);
@@ -36,24 +39,45 @@ router.get('/', async (req, res) => {
             {
                 model:StoreCategory,
                 include:[StoreCategory]
-            }
+            },
         ],
     });
-    const modifiedStores = stores.map(store=>{
+    const favoriteStores = await Favorite.findAll({
+        where:{
+            userId : req.user.id
+        }
+    });
+    const modifiedStores = [];
+    for (const store of stores) {
         let storeObj = store.toJSON();
         let totalStars = 0;
+        
         for(let comment of store.Comments){
             totalStars += comment.starRating;
         }
+        
         storeObj.avgStarRating = storeObj.Comments.length > 0 ? totalStars / storeObj.Comments.length : 0;
         storeObj.avgStarRating = storeObj.avgStarRating.toFixed(1);
         storeObj.category = findBiggestCategory(storeObj.StoreCategory);
         delete storeObj.StoreCategory;
-        return storeObj
-    })
-  
+        
+        const existFav = await Favorite.findOne({
+            where:{
+                userId:req.user.id,
+                storeId:storeObj.id
+            }
+        });
+        
+        storeObj.isFavorite = !!existFav;
+        
+        modifiedStores.push(storeObj);
+    }
+
     return res.json(modifiedStores);
+
+    
 });
+
 
 
 //get single store
@@ -132,4 +156,28 @@ router.post('/:storeId/comments', async (req, res) => {
     return res.json(newComment);
     
 });
+
+//get favorite stores by user id
+router.get('/favorite', async (req, res) => {
+    const {user} = req;
+    if(!user){
+        return res.status(401).json({
+            message:"Authentication required"})
+    }
+    const favorites = await Favorite.findAll({
+        where:{
+            userId : user.id
+
+        },
+        include: [
+            {
+                model: Store,
+            },
+        ],
+    });
+    const favStores = favorites.map(favorite=>favorite.Store)
+
+    return res.json(favStores);
+});
+
 module.exports = router;

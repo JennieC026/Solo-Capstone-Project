@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Dish.belongsTo(models.Store,{foreignKey:'storeId'});
       Dish.hasMany(models.DishCategory,{foreignKey:'categoryId'});
+      Dish.hasMany(models.Promotion,{foreignKey:'dishId'});
     }
   }
   Dish.init({

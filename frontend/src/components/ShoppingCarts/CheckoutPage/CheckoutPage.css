@@ -173,3 +173,15 @@
     margin-top: 20px;
     font-family: Arial, Helvetica, sans-serif;
   }
+
+  .checkout-thanks-llama-img img{
+    height:1300px
+  }
+
+  .checkout-page--container-img{
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }

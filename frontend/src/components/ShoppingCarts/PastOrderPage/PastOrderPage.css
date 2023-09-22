@@ -1,0 +1,66 @@
+.need-to-login-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.need-to-login{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 30px;
+    margin: 30px 0px;
+}
+
+.no-past-orders-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-past-orders{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 30px;
+    margin: 30px 0px;
+}
+
+.past-order-component{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.past-order-store-name-address{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 30px;
+    margin: 30px 0px;
+    width:500px;
+}
+
+.past-order-store-address{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    margin: 30px 0px;
+}
+
+.past-order-container{
+    width:50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgb(107, 107, 107);
+}
+
+.past-order-item-amount{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    margin: 30px 0px;
+    font-size: 20px;
+}

@@ -61,6 +61,10 @@ router.get('/', async (req, res) => {
                 model: ShoppingCartDish,
                 include: [Dish],
             },
+            {
+                model: Store,
+                
+            }
         ],
     });
     const modifiedShoppingCarts = shoppingCarts.map(shoppingCart => {

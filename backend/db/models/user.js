@@ -12,6 +12,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.hasMany(models.ShoppingCart,{foreignKey:'userId'});
       User.hasMany(models.Comment,{foreignKey:'userId'});
+      User.hasMany(models.Favorite,{foreignKey:'userId'});
+      
     }
   }
   User.init({

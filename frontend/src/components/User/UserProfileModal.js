@@ -24,7 +24,15 @@ function UserProfileModal(){
 
     const handlePastOrderClick = (e) => {
         e.preventDefault();
-        alert('Past Order feature coming soon!');
+        closeModal();
+        history.push('/shoppingCarts/past');
+        
+    }
+
+    const handleFavoriteClick = (e) => {
+        e.preventDefault();
+        closeModal();
+        history.push('/favorites');
     }
 
     const logout = (e) => {
@@ -56,7 +64,7 @@ function UserProfileModal(){
                                 <div>Orders</div></div>
                         </div>
                         <div className='user-profile-user-favorite'><i class="fa-solid fa-heart"></i>
-                        <div>Favorites</div></div>
+                        <div className='user-profile-user-favorite-text-container' onClick={handleFavoriteClick}>Favorites</div></div>
                         <button className='user-profile-logout-button' onClick={logout}>Log Out</button>
                         </div>
     

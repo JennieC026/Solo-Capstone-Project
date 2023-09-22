@@ -3,15 +3,23 @@ import{useDispatch,useSelector}from'react-redux'
 import {fetchAllStores}from'../../../store/stores'
 import { fetchFavorites,createFavorite } from '../../../store/favorite';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom';
-import CategoryCard from './CategoryCard.js';
+import CategoryCard from '../StoreIndex/CategoryCard';
 import StoreCard from '../StoreCard/StoreCard';
-import './StoreIndex.css'
+import { useParams } from 'react-router-dom/cjs/react-router-dom';
+import { fetchCategories } from '../../../store/categories';
+import './StoreCategoryPage.css';
 
 
-function StoreIndex(){
+
+function StoreCategoryPage(){
     const dispatch = useDispatch();
+    const {categoryName} = useParams();
+
     const user = useSelector(state => state.session.user);
-    const stores = useSelector(state => Object.values(state.stores));
+    const originStores = useSelector(state => Object.values(state.stores));
+    const categories = useSelector(state => Object.values(state.categories));
+    console.log('c',categories,originStores)
+    const stores = originStores.filter(store => store.category === categoryName || categories[store.categoryId].categoryName   === categoryName);
     const [showFilterMenu, setShowFilterMenu] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null);
     const [storeArray, setStoreArray] = useState(stores);
@@ -19,10 +27,17 @@ function StoreIndex(){
     
     
     useEffect(() => {
-        if(stores.length === 0){
+        if(originStores.length === 0){
             dispatch(fetchAllStores());
         }
         
+    }, [dispatch]);
+
+    useEffect(() => {
+        if(categories.length === 0){
+            dispatch(fetchCategories());
+        }
+        dispatch(fetchCategories());
     }, [dispatch]);
 
     useEffect(() => {
@@ -48,18 +63,36 @@ function StoreIndex(){
         }
 
     }
-    
-
+    if (originStores.length>0 && stores.length === 0){
+        return(
+            <div>
+                <div className='store-index-categories-header'>
+            <CategoryCard />
+                </div>
+                <div className='category-card-no-stores-text-img-container'>
+                <div className='store-category-index-no-stores'>This categories doesn't have any stores yet. 
+                </div>
+                <img className='store-category-index-no-stores-img' src='https://cdn.discordapp.com/attachments/811082976501825539/1154718827339321344/404_copy.png'/>
+                </div>
+                </div>
+            )
+    }
     if(stores.length === 0){
         return(<div>Loading...</div>)
     }
     
 
+   
     
-    return(
-        <div className='store-index-component-container'>
+    return(<div>
+<div className='store-index-component-container'>
             <div className='store-index-categories-header'>
                 <CategoryCard />
+            </div>
+            <div className='category-card-header'>
+                <div className='category-card-header-text'>
+                    {categoryName}
+                </div>
             </div>
             <div className='store-index-recommend-area'>
             </div>
@@ -122,7 +155,7 @@ function StoreIndex(){
             </div>
             
         </div>
-    )
+    </div>)
 }
 
-export default StoreIndex;
+export default StoreCategoryPage;

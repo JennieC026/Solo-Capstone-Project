@@ -6,29 +6,28 @@ if (process.env.NODE_ENV === 'production') {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('StoreCategories', {
+    await queryInterface.createTable('Favorites', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      parentCategoryId: {
+      userId: {
         type: Sequelize.INTEGER,
-        allowNull: true,
-        references: {
-          model: 'StoreCategories',
-          key: 'id'
+        allowNull:false,
+        references:{
+          model:'Users',
+          key:'id'
         }
       },
-      categoryName: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
-      },
-      categoryImageUrl:{
-        type: Sequelize.STRING,
-        allowNull: true,
+      storeId: {
+        type: Sequelize.INTEGER,
+        allowNull:false,
+        references:{
+          model:'Stores',
+          key:'id'
+        }
       },
       createdAt: {
         allowNull: false,
@@ -40,11 +39,10 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue:Sequelize.literal('CURRENT_TIMESTAMP')
       }
-      
     },options);
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = "StoreCategories";
+    options.tableName = 'Favorites';
     await queryInterface.dropTable(options);
   }
 };

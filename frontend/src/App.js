@@ -11,6 +11,9 @@ import { Route } from "react-router-dom/cjs/react-router-dom.min";
 import CheckoutPage from "./components/ShoppingCarts/CheckoutPage/CheckoutPage";
 import PastOrderPage from "./components/ShoppingCarts/PastOrderPage/PastOrderPage";
 import LandingPage from "./components/LandingPage/LandingPage";
+import FavoriteStoreIndex from "./components/Favorites/FavoriteStore";
+import StoreCategoryPage from "./components/Stores/StoreCategoryPage/StoreCategoryPage";
+import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +32,9 @@ function App() {
         <Route exact path="/stores">
           <StoreIndex />
         </Route>
+        <Route exact path="/stores/categories/:categoryName">
+          <StoreCategoryPage />
+        </Route>
         <Route exact path="/stores/:storeId">
           <StoreDetail />
         </Route>
@@ -44,7 +50,12 @@ function App() {
         <Route exact path ="shoppingCarts/:shoppingCartId">
           <ShoppingCartDetail />
         </Route>
-        
+        <Route exact path ="/favorites">
+          <FavoriteStoreIndex />
+        </Route>  
+        <Route>
+          <NotFoundPage />
+        </Route>      
         
         </Switch>}
       

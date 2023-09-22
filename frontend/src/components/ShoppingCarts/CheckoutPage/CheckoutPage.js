@@ -96,6 +96,7 @@ function CheckoutPage(){
 
     return(
         <div className='checkout-page-component'>
+            <div className='checkout-page--container-img'>
             
             <div className="checkout-container">
                 <div className="checkout-info-container">
@@ -151,6 +152,10 @@ function CheckoutPage(){
                         </div>
 
                     </div>
+                </div>
+                <div className='checkout-thanks-llama-img'>
+                    <img src='https://cdn.discordapp.com/attachments/811082976501825539/1154718814160818187/thnaks-llama_copy.png'/>
+                </div>
                 </div>
             
         </div>
