@@ -3,9 +3,10 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import * as sessionActions from "../../store/session";
 import { useHistory } from "react-router-dom";
+import { fetchAllShoppingCarts } from "../../store/shoppingcarts";
 import "./SignupForm.css";
 
-function SignupFormModal() {
+function SignupFormModal({handleSwitchModal}) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [email, setEmail] = useState("");
@@ -19,6 +20,11 @@ function SignupFormModal() {
   const [apiErrorArr, setApiErrorArr] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { closeModal } = useModal();
+
+  if(typeof handleSwitchModal === 'function'){
+    handleSwitchModal();
+  }
+
 
   useEffect(() => {
     const errorObj = {};
@@ -80,7 +86,10 @@ function SignupFormModal() {
           phoneNumber,
         })
       )
-        .then(closeModal)
+        .then(()=>{
+          closeModal();
+          dispatch(fetchAllShoppingCarts())
+        })
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) {
@@ -100,6 +109,7 @@ function SignupFormModal() {
     e.preventDefault();
     await dispatch(sessionActions.login({ credential:'demo@user.io', password:'password' }));
     closeModal();
+    await dispatch(fetchAllShoppingCarts())
     history.push('/');
   };
 
