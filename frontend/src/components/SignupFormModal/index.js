@@ -65,7 +65,6 @@ function SignupFormModal() {
   
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     setIsSubmitting(true);
     if (password === confirmPassword) {
       if(Object.keys(errors).length>0) return;
