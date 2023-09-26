@@ -24,7 +24,8 @@ router.get('/:storeId/dishes', async (req, res) => {
     });
     const modifiedDishes = dishes.map(dish=>{
         const dishObj = dish.toJSON();
-        dishObj.price = dishObj.price.toFixed(2);
+        const numericPrice = parseFloat(dishObj.price);
+        dishObj.price = numericPrice.toFixed(2);
         return dishObj;
     });
     console.log(modifiedDishes);
