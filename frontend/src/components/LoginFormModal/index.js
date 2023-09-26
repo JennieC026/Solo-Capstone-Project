@@ -45,7 +45,7 @@ function LoginFormModal({ handleSwitchModal}) {
   
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+   
     
     setIsSubmitting(true);
     if(Object.keys(errors).length){

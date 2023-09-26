@@ -22,7 +22,12 @@ router.get('/:storeId/dishes', async (req, res) => {
             }
         ],
     });
-    return res.json(dishes);
+    const modifiedDishes = dishes.map(dish=>{
+        const dishObj = dish.toJSON();
+        dishObj.price = dishObj.price.toFixed(2);
+        return dishObj;
+    });
+    return res.json(modifiedDishes);
 });
 
 //get all stores
