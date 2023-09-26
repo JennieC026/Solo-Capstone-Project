@@ -27,6 +27,7 @@ router.get('/:storeId/dishes', async (req, res) => {
         dishObj.price = dishObj.price.toFixed(2);
         return dishObj;
     });
+    console.log(modifiedDishes);
     return res.json(modifiedDishes);
 });
 
