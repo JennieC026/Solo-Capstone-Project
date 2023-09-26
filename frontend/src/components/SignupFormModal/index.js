@@ -5,7 +5,7 @@ import * as sessionActions from "../../store/session";
 import { useHistory } from "react-router-dom";
 import "./SignupForm.css";
 
-function SignupFormModal() {
+function SignupFormModal({handleSwitchModal}) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [email, setEmail] = useState("");
@@ -19,6 +19,11 @@ function SignupFormModal() {
   const [apiErrorArr, setApiErrorArr] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { closeModal } = useModal();
+
+  if(typeof handleSwitchModal === 'function'){
+    handleSwitchModal();
+  }
+
 
   useEffect(() => {
     const errorObj = {};
@@ -65,6 +70,7 @@ function SignupFormModal() {
   
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     setIsSubmitting(true);
     if (password === confirmPassword) {
       if(Object.keys(errors).length>0) return;
