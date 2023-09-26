@@ -87,7 +87,9 @@ function EditComment({comment,setShowUpdateCommentOrigin}){
                     {isSubmitting && errors.comment && <div className="comment-error-container">{errors.comment}</div>}
                     {starRating}
                     {isSubmitting && errors.stars && <div className="comment-error-container">{errors.stars}</div>}
-                    <button disabled={disabled} className="store-detail-edit-comment-form-button">Submit</button>
+
+                    <button disabled={(updateContent===comment.content&&updateStars===comment.starRating)||disabled} className="store-detail-edit-comment-form-button">Submit</button>
+
                 </form>
             </div>
         )

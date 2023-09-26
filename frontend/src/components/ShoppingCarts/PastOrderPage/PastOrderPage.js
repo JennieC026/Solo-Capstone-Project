@@ -25,6 +25,8 @@ function PastOrderPage(){
         }
     }, [dispatch]);
 
+    console.log('shoppingCarts',shoppingCarts,'filteredShoppingCarts',filteredShoppingCarts)
+
     if(!user){
         return(
             <div className='need-to-login-container'>
@@ -35,7 +37,7 @@ function PastOrderPage(){
         )
     }
 
-    if(shoppingCarts.length>0&&filteredShoppingCarts.length === 0){
+    if(shoppingCarts.length>=0&&filteredShoppingCarts.length === 0){
         return(
             <div className='no-past-orders-container'>
                 <div className='no-past-orders'>
@@ -58,9 +60,9 @@ function PastOrderPage(){
                 <div className='past-order-container'>
                     
                     <div className='past-order-store-name-address'>
-                        {shoppingCart?.Store.name}
+                        {shoppingCart?.Store?.name}
                            
-                                ({shoppingCart?.Store.address})
+                                ({shoppingCart?.Store?.address})
                         
                     </div>
                     
