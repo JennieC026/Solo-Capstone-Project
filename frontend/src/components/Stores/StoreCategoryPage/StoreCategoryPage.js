@@ -18,7 +18,6 @@ function StoreCategoryPage(){
     const user = useSelector(state => state.session.user);
     const originStores = useSelector(state => Object.values(state.stores));
     const categories = useSelector(state => Object.values(state.categories));
-    console.log('c',categories,originStores)
     const stores = originStores.filter(store => store.category === categoryName || categories[store.categoryId].categoryName   === categoryName);
     const [showFilterMenu, setShowFilterMenu] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null);

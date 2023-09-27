@@ -11,7 +11,12 @@ function StoreCard({store}){
     const user = useSelector(state => state.session.user);
     const [isFavorite, setIsFavorite] = useState(store.isFavorite);
 
+    useEffect(() => {
+        setIsFavorite(store.isFavorite);
+    }, [store]);
+
     const handleFavClick = (e) => {
+  
         e.preventDefault();
         if(isFavorite === false){
             dispatch(createFavorite({storeId:store.id}));

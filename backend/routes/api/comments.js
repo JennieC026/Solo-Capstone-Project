@@ -55,7 +55,6 @@ router.delete('/:commentId', async (req, res) => {
         return res.status(401).json({
             message:"Authentication required"})
     }
-    console.log(req.params.commentId)
     const targetComment = await Comment.findByPk(parseInt(req.params.commentId));
     if(!targetComment){
         return res.status(404).json({
