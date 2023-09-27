@@ -49,38 +49,58 @@ router.get('/', async (req, res) => {
             },
         ],
     });
-    const favoriteStores = await Favorite.findAll({
-        where:{
-            userId : req.user.id
-        }
-    });
-    const modifiedStores = [];
-    for (const store of stores) {
-        let storeObj = store.toJSON();
-        let totalStars = 0;
-        
-        for(let comment of store.Comments){
-            totalStars += comment.starRating;
-        }
-        
-        storeObj.avgStarRating = storeObj.Comments.length > 0 ? totalStars / storeObj.Comments.length : 0;
-        storeObj.avgStarRating = storeObj.avgStarRating.toFixed(1);
-        storeObj.category = findBiggestCategory(storeObj.StoreCategory);
-        delete storeObj.StoreCategory;
-        
-        const existFav = await Favorite.findOne({
-            where:{
-                userId:req.user.id,
-                storeId:storeObj.id
+    if(req.user){
+        const modifiedStores = [];
+        for (const store of stores) {
+            let storeObj = store.toJSON();
+            let totalStars = 0;
+            
+            for(let comment of store.Comments){
+                totalStars += comment.starRating;
             }
-        });
-        
-        storeObj.isFavorite = !!existFav;
-        
-        modifiedStores.push(storeObj);
-    }
+            
+            storeObj.avgStarRating = storeObj.Comments.length > 0 ? totalStars / storeObj.Comments.length : 0;
+            storeObj.avgStarRating = storeObj.avgStarRating.toFixed(1);
+            storeObj.category = findBiggestCategory(storeObj.StoreCategory);
+            delete storeObj.StoreCategory;
+            
+            const existFav = await Favorite.findOne({
+                where:{
+                    userId:req.user.id,
+                    storeId:storeObj.id
+                }
+            });
+            
+            storeObj.isFavorite = !!existFav;
+            
+            modifiedStores.push(storeObj);
+        }
+        return res.json(modifiedStores);
 
-    return res.json(modifiedStores);
+    }else{
+        const modifiedStores = [];
+        for (const store of stores) {
+            let storeObj = store.toJSON();
+            let totalStars = 0;
+            
+            for(let comment of store.Comments){
+                totalStars += comment.starRating;
+            }
+            
+            storeObj.avgStarRating = storeObj.Comments.length > 0 ? totalStars / storeObj.Comments.length : 0;
+            storeObj.avgStarRating = storeObj.avgStarRating.toFixed(1);
+            storeObj.category = findBiggestCategory(storeObj.StoreCategory);
+            delete storeObj.StoreCategory;
+            
+                  
+            modifiedStores.push(storeObj);
+            
+        }
+        return res.json(modifiedStores);
+    }
+    
+
+    
 
     
 });
