@@ -146,7 +146,6 @@ export const fetchCheckoutShoppingCart = (shoppingCartId) => async (dispatch) =>
 }
 
 export const fetchChangeDishQuantity = (shoppingCartId,dishId,quantity) => async (dispatch) =>{
-    console.log('dishIdInThunk',dishId,quantity)
     const response = await csrfFetch(`/api/shoppingCarts/${shoppingCartId}/shoppingCartDish/${dishId}`, {
         method: "PUT",
         body: JSON.stringify({quantity}),

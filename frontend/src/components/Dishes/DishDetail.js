@@ -40,7 +40,6 @@ function DishDetail(){
         const existShoppingCart = shoppingCartsArr.find((shoppingCart) => shoppingCart.storeId === parseInt(storeId));
     
         if(existShoppingCart){
-            console.log('quantity',quantity)
             dispatch(fetchEditShoppingCart(existShoppingCart.id,dishId,quantity));
             dispatch(fetchAllShoppingCarts());
             

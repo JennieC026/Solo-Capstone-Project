@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import * as sessionActions from "../../store/session";
 import { useHistory } from "react-router-dom";
+import { fetchAllStores } from "../../store/stores";
 import "./SignupForm.css";
 
 function SignupFormModal({handleSwitchModal}) {
@@ -85,7 +86,12 @@ function SignupFormModal({handleSwitchModal}) {
           phoneNumber,
         })
       )
-        .then(closeModal)
+        .then(async()=>{
+          closeModal();
+          setErrors({});
+          await dispatch(fetchAllStores());
+          history.push('/');
+        })
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) {
@@ -103,9 +109,13 @@ function SignupFormModal({handleSwitchModal}) {
 
   const handleDemoUserSubmit = async (e) => {
     e.preventDefault();
+    await dispatch(fetchAllStores());
     await dispatch(sessionActions.login({ credential:'demo@user.io', password:'password' }));
+    
     closeModal();
     history.push('/');
+    
+    
   };
 
   return (
@@ -212,7 +222,7 @@ function SignupFormModal({handleSwitchModal}) {
         {errors.confirmPassword && (
           <p className="login-error">{errors.confirmPassword}</p>
         )}
-        <button type="submit" disabled={disabled} className="signup-submit">Sign Up</button>
+        <button  disabled={disabled} className="signup-submit">Sign Up</button>
       </form>
       <button type="button" onClick={handleDemoUserSubmit} className="login-demo-user">Log in as Demo User</button>
     </div>

@@ -3,6 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useHistory } from "react-router-dom";
+import { fetchAllStores } from "../../store/stores";
 import "./LoginForm.css";
 
 function LoginFormModal({ handleSwitchModal}) {
@@ -44,7 +45,8 @@ function LoginFormModal({ handleSwitchModal}) {
 
   
 
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
+    e.preventDefault();
    
     
     setIsSubmitting(true);
@@ -53,9 +55,10 @@ function LoginFormModal({ handleSwitchModal}) {
     }
   
     return dispatch(sessionActions.login({ credential:email, password }))
-      .then(()=>{
+      .then(async ()=>{
         closeModal();
         setErrors({});
+        await dispatch(fetchAllStores());
         history.push('/');
       })
       .catch(async (res) => {
@@ -71,6 +74,7 @@ function LoginFormModal({ handleSwitchModal}) {
     e.preventDefault();
     setErrors({});
     await dispatch(sessionActions.login({ credential:'demo@user.io', password:'password' }));
+    await dispatch(fetchAllStores());
     closeModal();
     history.push('/');
   };
@@ -108,7 +112,7 @@ function LoginFormModal({ handleSwitchModal}) {
         {errors.credential && (
           <p className="login-error">{errors.credential}</p>
         )}
-        <button type="submit" className="login-submit">Log In</button>
+        <button  className="login-submit">Log In</button>
       </form>
       <button type="button" onClick={handleDemoUserSubmit} className="login-demo-user">Log in as Demo User</button>
     </div>

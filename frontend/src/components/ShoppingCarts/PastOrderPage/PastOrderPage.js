@@ -25,7 +25,6 @@ function PastOrderPage(){
         }
     }, [dispatch]);
 
-    console.log('shoppingCarts',shoppingCarts,'filteredShoppingCarts',filteredShoppingCarts)
 
     if(!user){
         return(

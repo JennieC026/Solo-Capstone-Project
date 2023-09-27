@@ -97,7 +97,7 @@ router.put('/:shoppingCartId/shoppingCartDish/:shoppingCartDishId', async (req, 
         })
     }
     if(targetShoppingCart.userId !== user.id){
-        console.log('here',targetShoppingCart,user)
+  
         return res.status(403).json({
             message:"Forbidden"
         })
@@ -108,7 +108,7 @@ router.put('/:shoppingCartId/shoppingCartDish/:shoppingCartDishId', async (req, 
         })
     }
     const {quantity} = req.body;
-    console.log('hittttttttttted')
+
  
     const existingShoppingCartDish = await ShoppingCartDish.findOne({
         where:{
@@ -116,7 +116,7 @@ router.put('/:shoppingCartId/shoppingCartDish/:shoppingCartDishId', async (req, 
             id:req.params.shoppingCartDishId
         }
     });
-    console.log('existingSho',existingShoppingCartDish)
+
   
     existingShoppingCartDish.quantity = quantity;
         await existingShoppingCartDish.save();
@@ -153,7 +153,7 @@ router.post('/:shoppingCartId/shoppingCartDish/:dishId', async (req, res) => {
         })
     }
     if(targetShoppingCart.userId !== user.id){
-        console.log('here',targetShoppingCart,user)
+     
         return res.status(403).json({
             message:"Forbidden"
         })
@@ -172,7 +172,7 @@ router.post('/:shoppingCartId/shoppingCartDish/:dishId', async (req, res) => {
         }
     });
     if(existingShoppingCartDish){
-        console.log('quantityyyyyyyyyyyyyyyyyyyyy',quantity)
+  
         existingShoppingCartDish.quantity = Number(existingShoppingCartDish.quantity) + Number(quantity);
         await existingShoppingCartDish.save();
         const newShoppingCart = await ShoppingCart.findByPk(targetShoppingCart.id,{
@@ -280,7 +280,7 @@ router.delete('/:shoppingCartId/shoppingCartDish/:shoppingCartDishId', async (re
         },
     ],
     });
-    console.log('find shoppingcart in delete route',targetShoppingCart)
+
     if(!targetShoppingCart){
         return res.status(404).json({
             message:"Order couldn't be found"
@@ -301,7 +301,7 @@ router.delete('/:shoppingCartId/shoppingCartDish/:shoppingCartDishId', async (re
             id:req.params.shoppingCartDishId
         }
     });
-    console.log('find shoppingcartdishh in delete route',existingShoppingCartDish)
+
     if(!existingShoppingCartDish){
         return res.status(404).json({
             message:"The dish in this order couldn't be found"
@@ -317,7 +317,7 @@ router.delete('/:shoppingCartId/shoppingCartDish/:shoppingCartDishId', async (re
     ],
 });
     if(!newShoppingCart.ShoppingCartDishes||newShoppingCart.ShoppingCartDishes?.length === 0){
-        console.log('destroy route hitted')
+
         await targetShoppingCart.destroy();
         return res.json({message:"Order deleted"})
     } else{

@@ -15,8 +15,14 @@ function StoreIndex(){
     const [showFilterMenu, setShowFilterMenu] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null);
     const [storeArray, setStoreArray] = useState(stores);
-   
+
     
+   
+    useEffect(() => {
+        dispatch(fetchAllStores());
+        setStoreArray(stores);
+    },[dispatch,user]);
+
     
     useEffect(() => {
         if(stores.length === 0){

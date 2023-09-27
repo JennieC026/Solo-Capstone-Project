@@ -44,7 +44,6 @@ const storesReducer = (state = initialState, action) => {
                 allStores[store.id] = store;
             });
             return {
-                ...state,
                 ...allStores,
 
             };
