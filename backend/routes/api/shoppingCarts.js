@@ -49,6 +49,7 @@ router.put('/:shoppingCartId/checkout', async (req, res) => {
 
 //get all orders
 router.get('/', async (req, res) => {
+    console.log('gett all shopping carts route hitted',req.user.id)
     const shoppingCarts = await ShoppingCart.findAll({
         attributes: ['id', 'userId', 'storeId','status','createdAt','updatedAt',
         
@@ -67,6 +68,7 @@ router.get('/', async (req, res) => {
             }
         ],
     });
+    console.log('shoppingCarts',shoppingCarts)
     const modifiedShoppingCarts = shoppingCarts.map(shoppingCart => {
         let shoppingCartObj = shoppingCart.toJSON();
         shoppingCartObj.total = 0;
