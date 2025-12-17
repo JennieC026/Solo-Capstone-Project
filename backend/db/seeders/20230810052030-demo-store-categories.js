@@ -12,32 +12,32 @@ module.exports = {
       { 
         parentCategoryId: null,
         categoryName: 'Fast Food',
-        categoryImageUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1153203577624477696/fast-food_copy.png"
+        categoryImageUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/category_icons/fast-food%20copy.png"
       },
       {
         parentCategoryId: 1,
         categoryName: 'Fried Chicken',
-        categoryImageUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1153203296656445480/fried-chicken.png"
+        categoryImageUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/category_icons/fried-chicken.png"
       },
       {
         parentCategoryId: 1,
         categoryName: 'Burgers',
-        categoryImageUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1153203295272321094/burger.png"
+        categoryImageUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/category_icons/burger.png"
       },
       {
         parentCategoryId: 1,
         categoryName: 'Pizza',
-        categoryImageUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1153203578027118633/pizza.png"
+        categoryImageUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/category_icons/pizza.png"
       },
       {
         parentCategoryId: null,
         categoryName: 'Desserts',
-        categoryImageUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1153203296115376228/dessert.png"
+        categoryImageUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/category_icons/dessert.png"
       },
       {
         parentCategoryId: 5,
         categoryName: 'Ice Cream',
-        categoryImageUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1153203296908099635/ice-cream.png"
+        categoryImageUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/category_icons/ice-cream.png"
       },
       {
         parentCategoryId: 5,
@@ -47,12 +47,12 @@ module.exports = {
       {
         parentCategoryId: 5,
         categoryName: 'Cakes',
-        categoryImageUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1153203295557529681/cake.png"
+        categoryImageUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/category_icons/cake.png"
       },
       {
         parentCategoryId: null,
         categoryName: 'Beverages',
-        categoryImageUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1153203294966140948/beverage.png"
+        categoryImageUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/category_icons/beverage.png"
       },
       {
         parentCategoryId: 9,
@@ -70,7 +70,7 @@ module.exports = {
       {
         parentCategoryId: null,
         categoryName: 'Alcohol',
-        categoryImageUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1153203294701895742/alcohol.png"
+        categoryImageUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/category_icons/alcohol.png"
       },
       {
         parentCategoryId: 13,
@@ -87,7 +87,7 @@ module.exports = {
       {
         parentCategoryId: null,
         categoryName: 'Chinese Food',
-        categoryImageUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1153206163559677962/chinese-food.png"
+        categoryImageUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/category_icons/chinese-food.png"
       },
       {
         parentCategoryId: 17,
@@ -96,7 +96,7 @@ module.exports = {
       {
         parentCategoryId: 17,
         categoryName: 'Noodles',
-        categoryImageUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1153206313401188382/noodle.png"
+        categoryImageUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/category_icons/noodle.png"
       },
       {
         parentCategoryId: 17,
@@ -105,7 +105,7 @@ module.exports = {
       {
         parentCategoryId: null,
         categoryName: 'Japanese Food',
-        categoryImageUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1153203297176539197/japanese-food.png"
+        categoryImageUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/category_icons/japanese-food.png"
       },
       {
         parentCategoryId: 21,
@@ -114,7 +114,7 @@ module.exports = {
       {
         parentCategoryId: 21,
         categoryName: 'Ramen',
-        categoryImageUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1153203578295566418/ramen.png"
+        categoryImageUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/category_icons/ramen.png"
       },
       {
         parentCategoryId: 21,

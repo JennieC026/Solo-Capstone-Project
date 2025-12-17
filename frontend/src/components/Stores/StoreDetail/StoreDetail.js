@@ -52,7 +52,7 @@ function StoreDetail(){
                 <i class="fa-solid fa-heart banner-icon" onClick={handleFavoriteClick}></i>
                 <div className='store-detail-banner-img-container'>
 
-                <img className='banner-image' src={store.bannerUrl ? store.bannerUrl : "https://cdn.discordapp.com/attachments/811082976501825539/1139436150923210772/images_3.jpg" } alt={store.name}/>
+                <img className='banner-image' src={store.bannerUrl ? store.bannerUrl : "https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images%20(3).jpg" } alt={store.name}/>
                 </div>
             </div>
             <div className='store-detail-info-container'>

@@ -98,7 +98,7 @@ function Navigation({ isLoaded }) {
         
         <div className="nav-icon-github-link-container">
         <NavLink exact to="/stores">
-          <img src="https://cdn.discordapp.com/attachments/811082976501825539/1142352525379510372/logo_copy.png" alt="logo" className="amber-eats-logo"/>
+          <img src="https://storage.googleapis.com/jennie_profolio/capstone_amberEat/logo%20copy.png" alt="logo" className="amber-eats-logo"/>
         </NavLink>
         <a className="github-link-a-nav" href="https://github.com/JennieC026">
         <div className="github-link-nav">
@@ -145,7 +145,7 @@ function Navigation({ isLoaded }) {
         
       <div className="nav-icon-github-link-container">
         <NavLink exact to="/stores">
-          <img src="https://cdn.discordapp.com/attachments/811082976501825539/1142352525379510372/logo_copy.png" alt="logo" className="amber-eats-logo"/>
+          <img src="https://storage.googleapis.com/jennie_profolio/capstone_amberEat/logo%20copy.png" alt="logo" className="amber-eats-logo"/>
         </NavLink>
         <a className="github-link-a-nav" href="https://github.com/JennieC026">
         <div className="github-link-nav">

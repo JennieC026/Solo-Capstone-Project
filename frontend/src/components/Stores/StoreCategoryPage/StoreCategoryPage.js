@@ -71,7 +71,7 @@ function StoreCategoryPage(){
                 <div className='category-card-no-stores-text-img-container'>
                 <div className='store-category-index-no-stores'>This categories doesn't have any stores yet. 
                 </div>
-                <img className='store-category-index-no-stores-img' src='https://cdn.discordapp.com/attachments/811082976501825539/1154718827339321344/404_copy.png'/>
+                <img className='store-category-index-no-stores-img' src='https://storage.googleapis.com/jennie_profolio/capstone_amberEat/404%20copy.png'/>
                 </div>
                 </div>
             )

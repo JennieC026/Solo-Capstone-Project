@@ -101,7 +101,7 @@ function CheckoutPage(){
             <div className="checkout-container">
                 <div className="checkout-info-container">
                     <div className="checkout-info-logo-container">
-                    <img src="https://cdn.discordapp.com/attachments/811082976501825539/1142352525379510372/logo_copy.png" alt="logo" className="amber-eats-logo-checkout"/>
+                    <img src="https://storage.googleapis.com/jennie_profolio/capstone_amberEat/logo%20copy.png" alt="logo" className="amber-eats-logo-checkout"/>
                         </div>
             <div className="checkout-header-container">
             <div className='checkout-thank-message'>Thanks for ordering,{sessionUser.firstName}</div>
@@ -154,7 +154,7 @@ function CheckoutPage(){
                     </div>
                 </div>
                 <div className='checkout-thanks-llama-img'>
-                    <img src='https://cdn.discordapp.com/attachments/811082976501825539/1154718814160818187/thnaks-llama_copy.png'/>
+                    <img src='https://storage.googleapis.com/jennie_profolio/capstone_amberEat/thnaks-llama%20copy.png'/>
                 </div>
                 </div>
             

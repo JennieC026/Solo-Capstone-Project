@@ -8,7 +8,7 @@ function NotFoundPage() {
         404: Can't Go yet, We can't find the page you're looking for.
       </div>
       <div className='not-found-page-image-container'>
-        <img className='not-found-page-image' src='https://cdn.discordapp.com/attachments/811082976501825539/1154719561652903986/404_copy-.png' />
+        <img className='not-found-page-image' src='https://storage.googleapis.com/jennie_profolio/capstone_amberEat/404%20copy-.png' />
       </div>
       </div>
     </div>

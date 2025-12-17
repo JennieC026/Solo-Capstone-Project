@@ -15,7 +15,7 @@ module.exports = {
         price: 10.99,
         calorie: 1200,
         categoryId: 2,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1139076619919687802/l-intro-1667318305.jpg'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/l-intro-1667318305.jpg'
       },
       {
         name:'Chicken Little',
@@ -23,7 +23,7 @@ module.exports = {
         price: 5.99,
         calorie: 500,
         categoryId: 2,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141577994704523304/image.png'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
       },
       {
         name:'3pc Chicken Box',
@@ -31,7 +31,7 @@ module.exports = {
         price: 16.99,
         calorie: 1450,
         categoryId: 2,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141578932454424698/image.png'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
       },
       {
         name:'Fill Up Box',
@@ -39,7 +39,7 @@ module.exports = {
         price: 24.00,
         calorie: 1200,
         categoryId: 2,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141579516406407188/image.png'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
       },
       {
         name:'8pc Nuggets',
@@ -47,7 +47,7 @@ module.exports = {
         price: 5.99,
         calorie: 300,
         categoryId: 2,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141579071319453836/image.png'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
       },
       {
         name:'Classic Chicken Sandwich',
@@ -55,7 +55,7 @@ module.exports = {
         price: 6.59,
         calorie: 500,
         categoryId: 2,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141579844329689250/image.png'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
 
       },
       {
@@ -64,7 +64,7 @@ module.exports = {
         price: 6.59,
         calorie: 550,
         categoryId: 2,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141579844329689250/image.png'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
 
       },
       {
@@ -73,7 +73,7 @@ module.exports = {
         price: 2.29,
         calorie: 200,
         categoryId: 9,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141580200807772200/image.png'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
       },
       {
         name:'Sweet Tea',
@@ -81,7 +81,7 @@ module.exports = {
         price: 2.75,
         calorie: 200,
         categoryId: 9,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141580539132923984/image.png'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
       },
       {
         name:"French Fries",
@@ -89,7 +89,7 @@ module.exports = {
         price: 3.94,
         calorie: 500,
         categoryId: 1,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141528156122120202/image.png'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
 
       },
       {
@@ -98,7 +98,7 @@ module.exports = {
         price: 4.29,
         calorie: 450,
         categoryId: 3,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141528156122120202/image.png'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
 
       },
       {
@@ -107,7 +107,7 @@ module.exports = {
         price: 9.10,
         calorie: 830,
         categoryId: 1,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141528217216368800/image.png'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
       },
       {
         name:'6pc Chicken Nuggets',
@@ -115,7 +115,7 @@ module.exports = {
         price: 5.48,
         calorie: 250,
         categoryId: 1,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141528217216368800/image.png'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
       },
       {
         name:'McCrispy',
@@ -123,7 +123,7 @@ module.exports = {
         price: 5.54,
         calorie: 600,
         categoryId: 3,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141528273273241610/image.png'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
 
 
       },
@@ -133,7 +133,7 @@ module.exports = {
         price: 5.53,
         calorie: 600,
         categoryId: 1,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141577478507348028/image.png'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
 
       },
 
@@ -143,7 +143,7 @@ module.exports = {
         price: 2.39,
         calorie: 200,
         categoryId: 9,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141575434216149072/image.png'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
       },
       {
         name:'Coke',
@@ -151,7 +151,7 @@ module.exports = {
         price: 2.39,
         calorie: 200,
         categoryId: 9,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141576675340070912/image.png'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
       },
       {
        name:"McChicken Combo",
@@ -159,7 +159,7 @@ module.exports = {
         price: 8.99,
         calorie: 1000,
         categoryId: 3,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1139076984811560960/download.jpg'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
       },
       {
        name:"Orange Chicken Combo",
@@ -167,7 +167,7 @@ module.exports = {
         price: 9.99,
         calorie: 1100,
         categoryId: 17,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1139074049515991100/ST-PandaExpress-KeyFeatures-640x356.jpg'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/ST-PandaExpress-KeyFeatures-640x356.jpg'
       },
       {
         name:'Plate',
@@ -175,7 +175,7 @@ module.exports = {
         price: 12.40,
         calorie: 1100,
         categoryId: 20,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141583808840351835/image.png'
+        imageUrl:'https://kalejunkie.com/wp-content/uploads/2024/01/KJ_Quick-Easy-Saucy-Beef-Broccoli-5.jpg'
       },
       {
         name:'Bigger Plate',
@@ -183,7 +183,7 @@ module.exports = {
         price: 14.95,
         calorie: 1300,
         categoryId: 20,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141584059894612018/image.png'
+        imageUrl:'https://kalejunkie.com/wp-content/uploads/2024/01/KJ_Quick-Easy-Saucy-Beef-Broccoli-5.jpg'
       },
       {
         name:'Bowl',
@@ -191,7 +191,7 @@ module.exports = {
         price: 10.00,
         calorie: 500,
         categoryId: 17,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141584382361084014/image.png'
+        imageUrl:'https://kalejunkie.com/wp-content/uploads/2024/01/KJ_Quick-Easy-Saucy-Beef-Broccoli-5.jpg'
       },
       {
         name:'Family Meal',
@@ -199,7 +199,7 @@ module.exports = {
         price: 43.70,
         calorie: 2100,
         categoryId: 17,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141584746770616360/image.png'
+        imageUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
 
       },
       {
@@ -208,7 +208,7 @@ module.exports = {
         price: 5.95,
         calorie: 500,
         categoryId: 19,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141584966401142894/image.png'
+        imageUrl:'https://tastesbetterfromscratch.com/wp-content/uploads/2023/10/Chow-Mein-1.jpg'
 
       },{
         name:'Broccoli Beef',
@@ -216,7 +216,7 @@ module.exports = {
         price: 4.50,
         calorie: 500,
         categoryId: 18,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141586204547108934/image.png'
+        imageUrl:'https://kalejunkie.com/wp-content/uploads/2024/01/KJ_Quick-Easy-Saucy-Beef-Broccoli-5.jpg'
       },
       {
         name:'Mushroom Chicken',
@@ -224,42 +224,42 @@ module.exports = {
         price: 6.20,
         calorie: 500,
         categoryId: 18,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141586863954612224/image.png'
+        imageUrl:'https://www.sprinklesandsprouts.com/wp-content/uploads/2019/11/Chinese-Chicken-and-Mushroom-SQ.jpg'
       },{
         name:'Super Greens',
         storeId: 3,
         price: 4.50,
         calorie: 50,
         categoryId: 17,
-        imageUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141587262300241950/image.png'
+        imageUrl:'https://kalejunkie.com/wp-content/uploads/2024/01/KJ_Quick-Easy-Saucy-Beef-Broccoli-5.jpg'
       },{
         name:'Chicken Fires',
         storeId: 4,
         price: 5.99,
         calorie: 400,
         categoryId: 1,
-        imageUrl:'https://media.discordapp.net/attachments/811082976501825539/1141527372915556423/burger-king-chicken-fries-200x300.jpg'
+        imageUrl:'https://www.afarmgirlsdabbles.com/wp-content/uploads/2023/04/Chicken-Fries-with-Garlic-Aioli-Sauce52368-s.jpg'
       },{
         name:'King Burger'
         ,storeId: 4,
         price: 6.59,
         calorie: 600,
         categoryId: 3,
-        imageUrl:'https://media.discordapp.net/attachments/811082976501825539/1141527373158821958/5d3ee5e83d23bdcd5f1c7240237fa7ab.jpg'
+        imageUrl:'https://www.foodandwine.com/thmb/XE8ubzwObCIgMw7qJ9CsqUZocNM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/MSG-Smash-Burger-FT-RECIPE0124-d9682401f3554ef683e24311abdf342b.jpg'
       },{
         name:'Bacon King',
         storeId: 4,
         price: 7.99,
         calorie: 700,
         categoryId: 3,
-        imageUrl:'https://media.discordapp.net/attachments/811082976501825539/1141527661668208670/image.png'
+        imageUrl:'https://www.foodandwine.com/thmb/XE8ubzwObCIgMw7qJ9CsqUZocNM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/MSG-Smash-Burger-FT-RECIPE0124-d9682401f3554ef683e24311abdf342b.jpg'
       },{
         name:'Original Chicken Sandwich',
         storeId: 4,
         price: 10.59,
         calorie: 1000,
         categoryId: 3,
-        imageUrl:'https://media.discordapp.net/attachments/811082976501825539/1141527661924073654/image.png'
+        imageUrl:'https://assets.epicurious.com/photos/5c745a108918ee7ab68daf79/1:1/w_2503,h_2503,c_limit/Smashburger-recipe-120219.jpg'
       },
       {
         name: 'Chick-fil-A Nuggets',

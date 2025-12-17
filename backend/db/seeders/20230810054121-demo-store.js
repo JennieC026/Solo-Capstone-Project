@@ -15,8 +15,8 @@ module.exports = {
         categoryId:2,
         costLevel:'$$',
         deliveryFee: 5,
-        coverUrl: 'https://cdn.discordapp.com/attachments/811082976501825539/1139072392845611069/deals.jpg',
-        bannerUrl: 'https://cdn.discordapp.com/attachments/811082976501825539/1139072702158745671/images.jpg'
+        coverUrl: 'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/deals.jpg',
+        bannerUrl: 'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
       },
       {
         name: 'McDonalds',
@@ -24,8 +24,8 @@ module.exports = {
         categoryId:3,
         costLevel:'$',
         deliveryFee: 4,
-        coverUrl: 'https://cdn.discordapp.com/attachments/811082976501825539/1139073460899938314/images_1.jpg',
-        bannerUrl: 'https://cdn.discordapp.com/attachments/811082976501825539/1139073595788754974/images_2.jpg'
+        coverUrl: 'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images%20(1).jpg',
+        bannerUrl: 'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images%20(2).jpg'
       },
       {
         name:'Panda Express',
@@ -33,8 +33,8 @@ module.exports = {
         categoryId:17,
         costLevel:'$$',
         deliveryFee: 6,
-        coverUrl: 'https://cdn.discordapp.com/attachments/811082976501825539/1139074049515991100/ST-PandaExpress-KeyFeatures-640x356.jpg',
-        bannerUrl: 'https://cdn.discordapp.com/attachments/811082976501825539/1139074041316114507/flatten.jpg'
+        coverUrl: 'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/ST-PandaExpress-KeyFeatures-640x356.jpg',
+        bannerUrl: 'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/flatten.jpg'
       },
       {
         name:'Burger King',
@@ -42,8 +42,8 @@ module.exports = {
         categoryId:3,
         costLevel:'$',
         deliveryFee: 4,
-        coverUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141529083029770370/burger-king_9.jpg',
-        bannerUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141528844147380234/image.png'
+        coverUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/burger-king_9.jpg',
+        bannerUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/images.jpg'
       },
       {
         name:'Chick-Fil-A',
@@ -51,8 +51,8 @@ module.exports = {
         categoryId:1,
         costLevel:'$$',
         deliveryFee: 5,
-        coverUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141529818450628639/1bacf3c91db0704dc4cbec40d791c17a.jpg',
-        bannerUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141529818450628639/1bacf3c91db0704dc4cbec40d791c17a.jpg'
+        coverUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/1bacf3c91db0704dc4cbec40d791c17a.jpg',
+        bannerUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/1bacf3c91db0704dc4cbec40d791c17a.jpg'
       },
       {
         name: "Llama Boba",
@@ -60,8 +60,8 @@ module.exports = {
         categoryId: 11,
         costLevel: "$",
         deliveryFee: 2,
-        coverUrl: "https://media.discordapp.net/attachments/811082976501825539/1141541532353183815/llama-boba_copy.jpg",
-        bannerUrl: "https://media.discordapp.net/attachments/811082976501825539/1141542389371129986/llama-boba-banner_copy.jpg?width=705&height=133"
+        coverUrl: "https://storage.googleapis.com/jennie_profolio/capstone_amberEat/llama-boba%20copy.jpg",
+        bannerUrl: "https://storage.googleapis.com/jennie_profolio/capstone_amberEat/llama-boba-banner%20copy.jpg"
       },
       {
         name:'Popeyes',
@@ -69,8 +69,8 @@ module.exports = {
         categoryId:2,
         costLevel:'$$',
         deliveryFee: 5,
-        coverUrl:'https://media.discordapp.net/attachments/811082976501825539/1141530158143119540/70a31f53e60031869b42eb678233f483.jpg',
-        bannerUrl:'https://media.discordapp.net/attachments/811082976501825539/1141530158143119540/70a31f53e60031869b42eb678233f483.jpg'
+        coverUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/70a31f53e60031869b42eb678233f483.jpg',
+        bannerUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/70a31f53e60031869b42eb678233f483.jpg'
       },
       {
         name:'Pizza Hut',
@@ -78,7 +78,7 @@ module.exports = {
         categoryId:4,
         costLevel:'$$',
         deliveryFee: 4,
-        coverUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141530487903485982/c6c061c5d2f61e9acf174b0ee408254c.jpg',
+        coverUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/c6c061c5d2f61e9acf174b0ee408254c.jpg',
         bannerUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141530487903485982/c6c061c5d2f61e9acf174b0ee408254c.jpg'
 
       },
@@ -88,8 +88,8 @@ module.exports = {
         categoryId:1,
         costLevel:'$',
         deliveryFee: 4,
-        coverUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141531246858620969/ec35fe47c65fcd3eff68108a440f9bfe.jpg',
-        bannerUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141531246858620969/ec35fe47c65fcd3eff68108a440f9bfe.jpg'
+        coverUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/ec35fe47c65fcd3eff68108a440f9bfe.jpg',
+        bannerUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/ec35fe47c65fcd3eff68108a440f9bfe.jpg'
 
       },
       {
@@ -98,8 +98,8 @@ module.exports = {
         categoryId:22,
         costLevel:'$$$',
         deliveryFee: 6,
-        coverUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141532027552792628/442f9d091eaeb40c8d618f55773bffcd.jpg',
-        bannerUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141532027552792628/442f9d091eaeb40c8d618f55773bffcd.jpg'
+        coverUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/442f9d091eaeb40c8d618f55773bffcd.jpg',
+        bannerUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/442f9d091eaeb40c8d618f55773bffcd.jpg'
       },
       {
         name:"Chengdu Taste",
@@ -107,8 +107,8 @@ module.exports = {
         categoryId:17,
         costLevel:'$$$',
         deliveryFee: 6,
-        coverUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141532807907250236/1094b604f1fffaca5ed07c737351d538.jpg',
-        bannerUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141532807907250236/1094b604f1fffaca5ed07c737351d538.jpg'
+        coverUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/1094b604f1fffaca5ed07c737351d538.jpg',
+        bannerUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/1094b604f1fffaca5ed07c737351d538.jpg'
       },
       {
         name:'In-N-Out',
@@ -116,8 +116,8 @@ module.exports = {
         categoryId:3,
         costLevel:'$',
         deliveryFee: 2,
-        coverUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141533273865068615/089447809046c11867a1b823aafd6cad.jpg',
-        bannerUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1141533273865068615/089447809046c11867a1b823aafd6cad.jpg'
+        coverUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/089447809046c11867a1b823aafd6cad.jpg',
+        bannerUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/089447809046c11867a1b823aafd6cad.jpg'
       },
       {
         name:'Wendys',
@@ -125,8 +125,8 @@ module.exports = {
         categoryId:2,
         costLevel:'$',
         deliveryFee: 2,
-        coverUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1141535656372338789/904856dd0ce5ef87e6c52b804779e92e.jpg",
-        bannerUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1141535656372338789/904856dd0ce5ef87e6c52b804779e92e.jpg"
+        coverUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/904856dd0ce5ef87e6c52b804779e92e.jpg",
+        bannerUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/904856dd0ce5ef87e6c52b804779e92e.jpg"
 
       },
       {
@@ -135,8 +135,8 @@ module.exports = {
         categoryId:1,
         costLevel:'$',
         deliveryFee: 4,
-        coverUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1141536041585618955/234d0d4eb26fd3c937ae0e5d964a1397.jpg",
-        bannerUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1141536041585618955/234d0d4eb26fd3c937ae0e5d964a1397.jpg"
+        coverUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/234d0d4eb26fd3c937ae0e5d964a1397.jpg",
+        bannerUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/234d0d4eb26fd3c937ae0e5d964a1397.jpg"
 
       },
       {
@@ -145,8 +145,8 @@ module.exports = {
         categoryId:1,
         costLevel:'$',
         deliveryFee: 3,
-        coverUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1141536309463232542/f5bd5510b2a1c2dac5470a3a813cfed0.jpg",
-        bannerUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1141536309463232542/f5bd5510b2a1c2dac5470a3a813cfed0.jpg"
+        coverUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/f5bd5510b2a1c2dac5470a3a813cfed0.jpg",
+        bannerUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/f5bd5510b2a1c2dac5470a3a813cfed0.jpg"
 
       },
       {
@@ -155,8 +155,8 @@ module.exports = {
         categoryId:5,
         costLevel:'$$$',
         deliveryFee: 2,
-        coverUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1141536837022797914/7e507eda61f1724cf5e4d41a031412c4.jpg",
-        bannerUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1141536837022797914/7e507eda61f1724cf5e4d41a031412c4.jpg"
+        coverUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/7e507eda61f1724cf5e4d41a031412c4.jpg",
+        bannerUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/7e507eda61f1724cf5e4d41a031412c4.jpg"
       },
       {
         name:'Golden Panda',
@@ -164,8 +164,8 @@ module.exports = {
         categoryId:17,
         costLevel:'$$',
         deliveryFee: 5,
-        coverUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1141537285339353148/5926e47e1d0aaa10e88fcf592e78501f.jpg",
-        bannerUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1141537285339353148/5926e47e1d0aaa10e88fcf592e78501f.jpg"
+        coverUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/5926e47e1d0aaa10e88fcf592e78501f.jpg",
+        bannerUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/5926e47e1d0aaa10e88fcf592e78501f.jpg"
       },
       {
         name:'Poke Bowl House',
@@ -173,8 +173,8 @@ module.exports = {
         categoryId:21,
         costLevel:'$$',
         deliveryFee: 5,
-        coverUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1141537709790347285/cca3193ab5fb92957bf44cd70db98dba.jpg",
-        bannerUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1141537709790347285/cca3193ab5fb92957bf44cd70db98dba.jpg"
+        coverUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/cca3193ab5fb92957bf44cd70db98dba.jpg",
+        bannerUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/cca3193ab5fb92957bf44cd70db98dba.jpg"
       },
       {
         name:'Reiko Ramen',
@@ -182,8 +182,8 @@ module.exports = {
         categoryId:23,
         costLevel:'$$$',
         deliveryFee: 5,
-        coverUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1141538448117874768/ddda33184207ca345095780c79fca77c.jpg",
-        bannerUrl:"https://cdn.discordapp.com/attachments/811082976501825539/1141538448117874768/ddda33184207ca345095780c79fca77c.jpg"
+        coverUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/ddda33184207ca345095780c79fca77c.jpg",
+        bannerUrl:"https://storage.googleapis.com/jennie_profolio/capstone_amberEat/seed_store_cover/ddda33184207ca345095780c79fca77c.jpg"
 
 
       }

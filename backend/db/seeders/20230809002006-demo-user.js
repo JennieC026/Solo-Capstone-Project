@@ -17,7 +17,7 @@ module.exports = {
         email:'demo@user.io',
         username:'demoAmber',
         phoneNumber:'1234567890',
-        photoUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1139063953331331153/amber-profile_copy.jpg',
+        photoUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/amber-profile%20copy.jpg',
         hashedPassword:bcrypt.hashSync('password')
       },
       {
@@ -26,7 +26,7 @@ module.exports = {
         email:'user1@user.io',
         username:'FakeUser1',
         phoneNumber:'2626262626',
-        photoUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1139063953331331153/amber-profile_copy.jpg',
+        photoUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/amber-profile%20copy.jpg',
         hashedPassword:bcrypt.hashSync('password2')
       },
       {
@@ -35,7 +35,7 @@ module.exports = {
         email:'user2@user.io',
         username:'FakeUser2',
         phoneNumber:'4561237890',
-        photoUrl:'https://cdn.discordapp.com/attachments/811082976501825539/1139063953331331153/amber-profile_copy.jpg',
+        photoUrl:'https://storage.googleapis.com/jennie_profolio/capstone_amberEat/amber-profile%20copy.jpg',
         hashedPassword:bcrypt.hashSync('password3')
       },
     ])
